@@ -1,6 +1,0 @@
-Record=TopLevelDocument|FileName=cover.SchDoc
-Record=SheetSymbol|SourceDocument=cover.SchDoc|Designator=AUDIO|SchDesignator=AUDIO|FileName=audio.SchDoc|SymbolType=Normal|RawFileName=audio.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=cover.SchDoc|Designator=FPGA|SchDesignator=FPGA|FileName=fpga.SchDoc|SymbolType=Normal|RawFileName=fpga.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=cover.SchDoc|Designator=MCU|SchDesignator=MCU|FileName=mcu.SchDoc|SymbolType=Normal|RawFileName=mcu.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=cover.SchDoc|Designator=POWER|SchDesignator=POWER|FileName=power.SchDoc|SymbolType=Normal|RawFileName=power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=cover.SchDoc|Designator=RADIO|SchDesignator=RADIO|FileName=radio.SchDoc|SymbolType=Normal|RawFileName=radio.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
