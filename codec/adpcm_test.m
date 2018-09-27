@@ -1,7 +1,5 @@
 %% Resample and save
 
-cd X:\TNE085
-
 [y_in, Fs] = audioread('ohyeah.wav');
 
 %sound(y_in,Fs)
