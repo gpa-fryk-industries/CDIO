@@ -1,6 +1,5 @@
 %% Resample and save
 clear sound
-cd X:\TNE085
 
 [y_in, Fs] = audioread('ohyeah.wav');
 
