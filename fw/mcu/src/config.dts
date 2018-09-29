@@ -1,0 +1,14 @@
+/dts-v1/;
+
+/{
+    compatible = "gpa,std";
+
+    chosen {
+        enable-semihosting;
+    };
+
+    fpga {
+
+    };
+
+};

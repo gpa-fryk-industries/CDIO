@@ -2,3 +2,6 @@
 	path = hw/altium_stdlib
 	url = https://github.com/Atmelfan/altium_stdlib.git
 
+[submodule "fw/mcu/libopencm3"]
+	path = fw/mcu/libopencm3
+	url = https://github.com/libopencm3/libopencm3.git
