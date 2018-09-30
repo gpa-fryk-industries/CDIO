@@ -1,6 +1,6 @@
 [submodule "altium_stdlib"]
 	path = hw/altium_stdlib
-	url = https://github.com/Atmelfan/altium_stdlib.git
+	url = https://github.com/gpa-fryk-industries/altium_stdlib
 
 [submodule "fw/mcu/libopencm3"]
 	path = fw/mcu/libopencm3
