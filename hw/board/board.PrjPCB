@@ -28,7 +28,7 @@ DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
 FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
-OutputPath=Project Outputs for board
+OutputPath=
 LogFolderPath=
 ManagedProjectGUID=
 IncludeDesignInRelease=0
@@ -44,7 +44,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -55,30 +55,13 @@ GenerateClassCluster=0
 DocumentUniqueId=AJCSBACD
 
 [Document2]
-DocumentPath=..\altium_stdlib\lib_passives\Project Outputs for lib_passives\lib_passives.IntLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document3]
 DocumentPath=fpga.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=2
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -88,14 +71,14 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CGHYSJSP
 
-[Document4]
+[Document3]
 DocumentPath=radio.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=5
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -105,14 +88,14 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SQIQJYBY
 
-[Document5]
+[Document4]
 DocumentPath=audio.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=0
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -122,14 +105,14 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UXTEXCGP
 
-[Document6]
+[Document5]
 DocumentPath=power.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=4
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -139,14 +122,14 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KOSNNVBM
 
-[Document7]
+[Document6]
 DocumentPath=mcu.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=3
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -156,7 +139,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VENRYAXY
 
-[Document8]
+[Document7]
 DocumentPath=audio.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -173,7 +156,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document9]
+[Document8]
 DocumentPath=radio.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -190,7 +173,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document10]
+[Document9]
 DocumentPath=make_commit.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -207,7 +190,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document11]
+[Document10]
 DocumentPath=make_manufacture.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -224,7 +207,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document12]
+[Document11]
 DocumentPath=board.BomDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -241,9 +224,141 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[GeneratedDocument1]
-DocumentPath=Project Outputs for Free Documents\Bill of Materials-board.csv
+[Document12]
+DocumentPath=..\altium_stdlib\lib_passives\Project Outputs for lib_passives\lib_passives.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
 DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document13]
+DocumentPath=..\altium_stdlib\lib_st\Project Outputs for lib_st\lib_st.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document14]
+DocumentPath=..\altium_stdlib\lib_lattice\Project Outputs for lib_lattice\lib_lattice.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document15]
+DocumentPath=..\altium_stdlib\lib_ti\Project Outputs for lib_ti\lib_ti.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[ProjectVariant1]
+UniqueID=4124965C-27BD-4774-97E8-99DA2E73A26B
+Description=EUROPE
+AllowFabrication=1
+ParameterCount=0
+VariationCount=1
+Variation1=Designator=RF?|UniqueId=\EGUHEANU\TKACDTTV|Kind=2|AlternatePart=SPSGRF-868|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-868|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
+ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-868
+ParamDesignator1=RF?
+ParamVariation2=ParameterName=Component Kind|VariantValue=Standard
+ParamDesignator2=RF?
+ParamVariation3=ParameterName=ComponentLink1Description|VariantValue=datasheet
+ParamDesignator3=RF?
+ParamVariation4=ParameterName=ComponentLink1URL|VariantValue=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf
+ParamDesignator4=RF?
+ParamVariation5=ParameterName=Description|VariantValue=Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules
+ParamDesignator5=RF?
+ParamVariation6=ParameterName=Footprint|VariantValue=spsgrf
+ParamDesignator6=RF?
+ParamVariation7=ParameterName=Ibis Model|VariantValue= 
+ParamDesignator7=RF?
+ParamVariation8=ParameterName=Library Reference|VariantValue=spsgrf-868
+ParamDesignator8=RF?
+ParamVariation9=ParameterName=PCB3D|VariantValue= 
+ParamDesignator9=RF?
+ParamVariation10=ParameterName=Pin Info|VariantValue= 
+ParamDesignator10=RF?
+ParamVariation11=ParameterName=Signal Integrity|VariantValue= 
+ParamDesignator11=RF?
+ParamVariation12=ParameterName=Simulation|VariantValue= 
+ParamDesignator12=RF?
+ParamVariationCount=12
+
+[ProjectVariant2]
+UniqueID=8CBE7E34-060A-4951-8AEA-FB7D3389F7EC
+Description=AMERICA
+AllowFabrication=0
+ParameterCount=0
+VariationCount=1
+Variation1=Designator=RF?|UniqueId=\EGUHEANU\TKACDTTV|Kind=2|AlternatePart=SPSGRF-915|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-915|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
+ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-915
+ParamDesignator1=RF?
+ParamVariation2=ParameterName=Component Kind|VariantValue=Standard
+ParamDesignator2=RF?
+ParamVariation3=ParameterName=ComponentLink1Description|VariantValue=datasheet
+ParamDesignator3=RF?
+ParamVariation4=ParameterName=ComponentLink1URL|VariantValue=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf
+ParamDesignator4=RF?
+ParamVariation5=ParameterName=Description|VariantValue=Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules
+ParamDesignator5=RF?
+ParamVariation6=ParameterName=Footprint|VariantValue=spsgrf
+ParamDesignator6=RF?
+ParamVariation7=ParameterName=Ibis Model|VariantValue= 
+ParamDesignator7=RF?
+ParamVariation8=ParameterName=Library Reference|VariantValue=spsgrf-915
+ParamDesignator8=RF?
+ParamVariation9=ParameterName=PCB3D|VariantValue= 
+ParamDesignator9=RF?
+ParamVariation10=ParameterName=Pin Info|VariantValue= 
+ParamDesignator10=RF?
+ParamVariation11=ParameterName=Signal Integrity|VariantValue= 
+ParamDesignator11=RF?
+ParamVariation12=ParameterName=Simulation|VariantValue= 
+ParamDesignator12=RF?
+ParamVariationCount=12
 
 [Parameter1]
 Name=project_name
@@ -268,12 +383,12 @@ ContentTypeGUID=CB6F2064-E317-11DF-B822-12313F0024A2
 ConfigurationType=Source
 
 [Generic_EDE]
-OutputDir=Project Outputs for board
+OutputDir=
 
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=CadnetixNetlist
 OutputName1=Cadnetix Netlist
@@ -379,7 +494,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
@@ -451,7 +566,7 @@ PageOptions10=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Assembly
 OutputName1=Assembly Drawings
@@ -473,7 +588,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Board Stack Report
 OutputName1=Report Board Stack
@@ -545,7 +660,7 @@ OutputDefault12=0
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
@@ -582,7 +697,7 @@ OutputDefault6=0
 [OutputGroup7]
 Name=Other Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Text Print
 OutputName1=Text Print
@@ -762,7 +877,7 @@ PageOptions29=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup8]
 Name=Validation Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Component states check
 OutputName1=Server's components states check
@@ -801,7 +916,7 @@ OutputDefault6=0
 [OutputGroup9]
 Name=Export Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=AutoCAD dwg/dxf PCB
 OutputName1=AutoCAD dwg/dxf File PCB
@@ -852,7 +967,7 @@ OutputDefault9=0
 [OutputGroup10]
 Name=PostProcess Outputs
 Description=
-TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
+TargetPrinter=Mob-Colour-LIU [edp-liu-mob01](Mobility)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Copy Files
 OutputName1=Copy Files
