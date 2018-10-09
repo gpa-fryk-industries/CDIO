@@ -1,4 +1,4 @@
-|RECORD=BOM|VERSION=2|FILENAME=X:\TNE085\CDIO\hw\board\board.BomDoc|KIND=ALTIUM_DESIGNER_LIVEBOM|DATE=20.09.2018|TIME=19:20:01|CURRENCY=USD|PRODUCTIONQUANTITY=1|PERUNITTARGETPRICE=0|PERUNITACTUALPRICE=0
+|RECORD=BOM|VERSION=2|FILENAME=X:\TNE085\CDIO\hw\board\board.$$$|KIND=ALTIUM_DESIGNER_LIVEBOM|DATE=09.10.2018|TIME=14:37:21|CURRENCY=USD|PRODUCTIONQUANTITY=1|PERUNITTARGETPRICE=0|PERUNITACTUALPRICE=0
 |RECORD=GeneralOptions|OPENEXPORTED=False|ADDTOPROJECT=False|FORCEFIT=False|NOTFITTED=False|TEMPLATEFILENAME=|BATCHMODE=0|SUPPLIERPRODQTY=0|SUPPLIERAUTOQTY=False|SUPPLIERUSECACHEDPRICING=False|SUPPLIERCURRENCY=|SOLUTIONSPERITEM=1|SUPPLIERSPERSOLUTION=1|DISPLAYTOTALROW=False|DISPLAYSUBTOTALSFORGROUPS=False|INCLUDEPCBPARAMETERS=False|INCLUDEDBPARAMETERS=False|INCLUDEVAULTPARAMETERS=False|INCLUDECLOUDPARAMETERS=False|INCLUDEDOCUMENTPARAMETERS=False|FILTEROUTRISKYSOLUTIONS=True|DESIGNATORGROUPING=No
 |RECORD=SortOrderOptions|SORTORDER=
 |RECORD=GroupOrderOptions|GROUPORDER=
@@ -13,3 +13,54 @@
 |RECORD=CheckOptions|CHECKLEVELS=
 |RECORD=LineNumberingOptions|STARTVALUE=|INCREMENT=
 |RECORD=Catalog|DBLINKFILEPATH=
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_passives.IntLib\cap|DESIGNITEMID=cap|ITEMSOURCE=lib_passives.IntLib|STATUS=Unknown|DESCRIPTION=Capacitor|USERCOMMENTS=cap|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=10u,cap,Capacitor|COMPONENTPARAMETERS=#digikey=,#mouser=,Comment=cap,"Component Kind=Standard",Description=Capacitor,Footprint=CAPC3216X14N,"Ibis Model=","Library Name=lib_passives.IntLib","Library Reference=cap",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=,type=,value=10u,voltage=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_passives.IntLib\cap|DESIGNITEMID=cap|ITEMSOURCE=lib_passives.IntLib|STATUS=Unknown|DESCRIPTION=Capacitor|USERCOMMENTS=cap|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=100n,cap,Capacitor|COMPONENTPARAMETERS=#digikey=,#mouser=,Comment=cap,"Component Kind=Standard",Description=Capacitor,Footprint=CAPC1005X06N,"Ibis Model=","Library Name=lib_passives.IntLib","Library Reference=cap",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=,type=,value=100n,voltage=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_passives.IntLib\cap|DESIGNITEMID=cap|ITEMSOURCE=lib_passives.IntLib|STATUS=Unknown|DESCRIPTION=Capacitor|USERCOMMENTS=cap|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=1u,cap,Capacitor|COMPONENTPARAMETERS=#digikey=,#mouser=,Comment=cap,"Component Kind=Standard",Description=Capacitor,Footprint=CAPC2012X11N,"Ibis Model=","Library Name=lib_passives.IntLib","Library Reference=cap",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=,type=,value=1u,voltage=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_actives.IntLib\led|DESIGNITEMID=led|ITEMSOURCE=lib_actives.IntLib|STATUS=Unknown|DESCRIPTION=LED|USERCOMMENTS=led|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=led,RED|COMPONENTPARAMETERS=Comment=led,"Component Kind=Standard",Description=LED,Footprint=CAPCP1005X06N,"Ibis Model=","Library Name=lib_actives.IntLib","Library Reference=led",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=,value=RED|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_passives.IntLib\res|DESIGNITEMID=res|ITEMSOURCE=lib_passives.IntLib|STATUS=Unknown|DESCRIPTION=Resistor|USERCOMMENTS=res|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=10K,res,Resistor|COMPONENTPARAMETERS=#digikey=,#mouser=,Comment=res,"Component Kind=Standard",Description=Resistor,Footprint=RESC1005X04N,"Ibis Model=","Library Name=lib_passives.IntLib","Library Reference=res",PCB3D=,"Pin Info=",power=,"Signal Integrity=",Simulation=,value=10K,voltage=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_passives.IntLib\ind|DESIGNITEMID=ind|ITEMSOURCE=lib_passives.IntLib|STATUS=Unknown|DESCRIPTION=Inductor|USERCOMMENTS=ind|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=100u,ind,Inductor|COMPONENTPARAMETERS=#digikey=,#mouser=,Comment=ind,"Component Kind=Standard",current=,Description=Inductor,Footprint=INDC3216X20N,"Ibis Model=","Library Name=lib_passives.IntLib","Library Reference=ind",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=,value=100u|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_onsemi.IntLib\ntr4003n|DESIGNITEMID=ntr4003n|ITEMSOURCE=lib_onsemi.IntLib|STATUS=Unknown|DESCRIPTION=N-channel Mosfet|USERCOMMENTS=NTR4003N|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH="N-channel Mosfet",NTR4003N|COMPONENTPARAMETERS=#digikey=,#mouser=,Comment=NTR4003N,"Component Kind=Standard","Description=N-channel Mosfet",Footprint=SOT95P235X100-3N,"Ibis Model=","Library Name=lib_onsemi.IntLib","Library Reference=ntr4003n",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_st.IntLib\spsgrf-868|DESIGNITEMID=spsgrf-868|ITEMSOURCE=lib_st.IntLib|STATUS=Unknown|DESCRIPTION=Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules|USERCOMMENTS=SPSGRF-868|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=SPSGRF-868,"Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules"|COMPONENTPARAMETERS=Comment=SPSGRF-868,"Component Kind=Standard",ComponentLink1Description=datasheet,ComponentLink1URL=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf,"Description=Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules",Footprint=spsgrf,"Ibis Model=","Library Name=lib_st.IntLib","Library Reference=spsgrf-868",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_st.IntLib\spsgrf-868|DESIGNITEMID=spsgrf-868|ITEMSOURCE=lib_st.IntLib|STATUS=Unknown|DESCRIPTION=Sub-GHz (868 or 915 MHz) low power programmable RF|USERCOMMENTS=SPSGRF-868|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=SPSGRF-868,"Sub-GHz (868 or 915 MHz) low power programmable RF"|COMPONENTPARAMETERS=Comment=SPSGRF-868,"Component Kind=Standard",ComponentLink1Description=datasheet,ComponentLink1URL=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf,"Description=Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules",Footprint=spsgrf,"Ibis Model=","Library Name=lib_st.IntLib","Library Reference=spsgrf-868",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_st.IntLib\spsgrf-915|DESIGNITEMID=spsgrf-915|ITEMSOURCE=lib_st.IntLib|STATUS=Unknown|DESCRIPTION=Sub-GHz (868 or 915 MHz) low power programmable RF|USERCOMMENTS=SPSGRF-915|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=SPSGRF-915,"Sub-GHz (868 or 915 MHz) low power programmable RF"|COMPONENTPARAMETERS=Comment=SPSGRF-915,"Component Kind=Standard",ComponentLink1Description=datasheet,ComponentLink1URL=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf,"Description=Sub-GHz (868 or 915 MHz) low power programmable RF
+transceiver modules",Footprint=spsgrf,"Ibis Model=","Library Name=lib_st.IntLib","Library Reference=spsgrf-915",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_lattice.IntLib\ice40up5k-sg48|DESIGNITEMID=ice40up5k-sg48|ITEMSOURCE=lib_lattice.IntLib|STATUS=Unknown|DESCRIPTION=iCE40 UltraPlus family from Lattice Semiconductor is 
+an ultra-low power FPGA and sensor manager 
+designed for ultra
+-
+low power mobile a
+pplications, such 
+as smartphones, tablets and hand-held devices.|USERCOMMENTS=iCE40UP5K|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH="iCE40 UltraPlus family from Lattice Semiconductor is 
+an ultra-low power FPGA and sensor manager 
+designed for ultra
+-
+low power mobile a
+pplications, such 
+as smartphones, tablets and hand-held devices.",iCE40UP5K|COMPONENTPARAMETERS=Comment=iCE40UP5K,"Component Kind=Standard",ComponentLink1Description=datasheet,ComponentLink1URL=https://www.mouser.se/datasheet/2/225/iCE40%20UltraPlus%20Family%20Data%20Sheet-1149905.pdf,"Description=iCE40 UltraPlus family from Lattice Semiconductor is 
+an ultra-low power FPGA and sensor manager 
+designed for ultra
+-
+low power mobile a
+pplications, such 
+as smartphones, tablets and hand-held devices.",Footprint=QFN127P600-8N-ICE40UP5K,"Ibis Model=","Library Name=lib_lattice.IntLib","Library Reference=ice40up5k-sg48",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_ti.SchLib\tps62740dssr|DESIGNITEMID=tps62740dssr|ITEMSOURCE=lib_ti.SchLib|STATUS=Unknown|DESCRIPTION=TPS6274x 360nA IQ Step Down Converter For Low Power Applications|USERCOMMENTS=TPS62740DSSR|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=TPS62740DSSR,"TPS6274x 360nA IQ Step Down Converter For Low Power Applications"|COMPONENTPARAMETERS=Comment=TPS62740DSSR,"Component Kind=Standard",ComponentLink1Description=datasheet,ComponentLink1URL=http://www.ti.com/general/docs/suppproductinfo.tsp?distId=26&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Ftps62740,"Description=TPS6274x 360nA IQ Step Down Converter For Low Power Applications",Footprint=SON50P200X80_HS-13N,"Ibis Model=","Library Name=lib_ti.SchLib","Library Reference=tps62740dssr",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_st.IntLib\stm32l011f4u|DESIGNITEMID=stm32l011f4u|ITEMSOURCE=lib_st.IntLib|STATUS=Unknown|DESCRIPTION=|USERCOMMENTS=STM32L011F4|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH=,STM32L011F4|COMPONENTPARAMETERS=Comment=STM32L011F4,"Component Kind=Standard",Description=,Footprint=QFN50P300X300X60-20N,"Ibis Model=","Library Name=lib_st.IntLib","Library Reference=stm32l011f4u",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0
+|RECORD=CatalogItem|ITEMTYPE=Automatic-NonVault|UNIQUEID=lib_actives.IntLib\voltreg5|DESIGNITEMID=voltreg5|ITEMSOURCE=lib_actives.IntLib|STATUS=Unknown|DESCRIPTION=5pin voltage regulator|USERCOMMENTS=voltreg5|NOTE=|LINENUMBER=|SELECTEDPARAMETERSHASH="5pin voltage regulator",voltreg5|COMPONENTPARAMETERS=Comment=voltreg5,"Component Kind=Standard","Description=5pin voltage regulator",Footprint=SOT95P245X110-5N,"Ibis Model=","Library Name=lib_actives.IntLib","Library Reference=voltreg5",PCB3D=,"Pin Info=","Signal Integrity=",Simulation=|CUSTOMPARAMETERS=
+|RECORD=PartChoiceGroups|GROUPBYFIELDCOUNT=0

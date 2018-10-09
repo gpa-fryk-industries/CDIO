@@ -2,3 +2,5 @@
 Version=1.0
 [Project1]
 ProjectPath=board\board.PrjPCB
+[Project2]
+ProjectPath=altium_stdlib\lib_ti\lib_ti.LibPkg

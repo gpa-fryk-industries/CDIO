@@ -1,0 +1,11 @@
+# Gitignore gerber files
+
+# Altium garbage
+*.apr
+*.DRR
+*.EXTREP
+*.LDP
+*.REP
+*.RUL
+*.APR_LIB
+
