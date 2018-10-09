@@ -292,6 +292,40 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
+[Document16]
+DocumentPath=..\altium_stdlib\lib_actives\Project Outputs for lib_actives\lib_actives.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document17]
+DocumentPath=..\altium_stdlib\lib_onsemi\Project Outputs for lib_onsemi\lib_onsemi.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [ProjectVariant1]
 UniqueID=4124965C-27BD-4774-97E8-99DA2E73A26B
 Description=EUROPE
@@ -308,7 +342,6 @@ ParamDesignator3=RF?
 ParamVariation4=ParameterName=ComponentLink1URL|VariantValue=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf
 ParamDesignator4=RF?
 ParamVariation5=ParameterName=Description|VariantValue=Sub-GHz (868 or 915 MHz) low power programmable RF
-transceiver modules
 ParamDesignator5=RF?
 ParamVariation6=ParameterName=Footprint|VariantValue=spsgrf
 ParamDesignator6=RF?
@@ -342,7 +375,6 @@ ParamDesignator3=RF?
 ParamVariation4=ParameterName=ComponentLink1URL|VariantValue=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf
 ParamDesignator4=RF?
 ParamVariation5=ParameterName=Description|VariantValue=Sub-GHz (868 or 915 MHz) low power programmable RF
-transceiver modules
 ParamDesignator5=RF?
 ParamVariation6=ParameterName=Footprint|VariantValue=spsgrf
 ParamDesignator6=RF?
@@ -963,6 +995,36 @@ OutputName9=Specctra Design PCB
 OutputDocumentPath9=
 OutputVariantName9=
 OutputDefault9=0
+OutputType10=Ansoft Neutral
+OutputName10=Ansoft Neutral (AutoPCB)
+OutputDocumentPath10=
+OutputVariantName10=
+OutputDefault10=0
+OutputType11=HyperLynx
+OutputName11=HyperLynx (AutoPCB)
+OutputDocumentPath11=
+OutputVariantName11=
+OutputDefault11=0
+OutputType12=Orcad v7 Capture Design
+OutputName12=Orcad v7 Capture Design (AutoSCH)
+OutputDocumentPath12=
+OutputVariantName12=
+OutputDefault12=0
+OutputType13=P-CAD ASCII
+OutputName13=P-CAD ASCII (AutoPCB)
+OutputDocumentPath13=
+OutputVariantName13=
+OutputDefault13=0
+OutputType14=P-CAD V16 Schematic Design
+OutputName14=P-CAD V16 Schematic Design (AutoSCH)
+OutputDocumentPath14=
+OutputVariantName14=
+OutputDefault14=0
+OutputType15=SiSoft
+OutputName15=SiSoft (AutoPCB)
+OutputDocumentPath15=
+OutputVariantName15=
+OutputDefault15=0
 
 [OutputGroup10]
 Name=PostProcess Outputs
