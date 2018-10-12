@@ -2,7 +2,7 @@
 
 cd X:\TNE085
 
-[y_in, Fs] = audioread('ohyeah.wav');
+[y_in, Fs] = audioread('priestconvert2.wav');
 
 %sound(y_in,Fs)
 
@@ -49,7 +49,7 @@ StepSizeTable = [
 
 %sound(y_in,Fs);
 
-y_in = floor((2^15).*y_in');
+y_in = floor((2^8).*y_in');
 L = length(y_in);
 
 state.prevsample = 0;
@@ -217,4 +217,4 @@ for i = 1:L
 end
 
 plot(1:L, [y_in; y_out])
-sound(y_out.*(2^-15), Fs);
+sound(y_out.*(2^-8), Fs);

@@ -241,10 +241,6 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[GeneratedDocument1]
-DocumentPath=Project Outputs for Free Documents\Bill of Materials-board.csv
-DItemRevisionGUID=
-
 [Parameter1]
 Name=project_name
 Value=Snorkling clock
