@@ -479,30 +479,13 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document27]
-DocumentPath=board.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=KHECAWFR
-
 [ProjectVariant1]
 UniqueID=4124965C-27BD-4774-97E8-99DA2E73A26B
 Description=EUROPE
 AllowFabrication=1
 ParameterCount=0
 VariationCount=5
-Variation1=Designator=RF1|UniqueId=\EGUHEANU\TKACDTTV|Kind=2|AlternatePart=SPSGRF-868|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-868|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
+Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-868|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-868|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
 ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-868
 ParamDesignator1=RF1
 ParamVariation2=ParameterName=Component Kind|VariantValue=Standard
@@ -527,10 +510,10 @@ ParamVariation11=ParameterName=Signal Integrity|VariantValue=
 ParamDesignator11=RF1
 ParamVariation12=ParameterName=Simulation|VariantValue= 
 ParamDesignator12=RF1
-Variation2=Designator=J1|UniqueId=\QXPRQXGK\GYLCRUVG|Kind=1|AlternatePart= 
-Variation3=Designator=J3|UniqueId=\QXPRQXGK\JAERIMXD|Kind=1|AlternatePart= 
-Variation4=Designator=D1|UniqueId=\QXPRQXGK\GOBEIUEJ|Kind=1|AlternatePart= 
-Variation5=Designator=R4|UniqueId=\QXPRQXGK\NTHEPNDX|Kind=1|AlternatePart= 
+Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePart= 
+Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
+Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
+Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
 ParamVariationCount=12
 
 [ProjectVariant2]
@@ -539,7 +522,7 @@ Description=AMERICA
 AllowFabrication=0
 ParameterCount=0
 VariationCount=5
-Variation1=Designator=RF1|UniqueId=\EGUHEANU\TKACDTTV|Kind=2|AlternatePart=SPSGRF-915|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-915|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
+Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-915|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-915|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
 ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-915
 ParamDesignator1=RF1
 ParamVariation2=ParameterName=Component Kind|VariantValue=Standard
@@ -564,10 +547,10 @@ ParamVariation11=ParameterName=Signal Integrity|VariantValue=
 ParamDesignator11=RF1
 ParamVariation12=ParameterName=Simulation|VariantValue= 
 ParamDesignator12=RF1
-Variation2=Designator=J1|UniqueId=\QXPRQXGK\GYLCRUVG|Kind=1|AlternatePart= 
-Variation3=Designator=J3|UniqueId=\QXPRQXGK\JAERIMXD|Kind=1|AlternatePart= 
-Variation4=Designator=D1|UniqueId=\QXPRQXGK\GOBEIUEJ|Kind=1|AlternatePart= 
-Variation5=Designator=R4|UniqueId=\QXPRQXGK\NTHEPNDX|Kind=1|AlternatePart= 
+Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePart= 
+Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
+Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
+Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
 ParamVariationCount=12
 
 [GeneratedDocument1]
@@ -1420,7 +1403,7 @@ Type10=1
 Type11=2
 Type12=2
 Type13=2
-Type14=1
+Type14=0
 Type15=1
 Type16=1
 Type17=1
@@ -1532,19 +1515,19 @@ Type122=2
 
 [ERC Connection Matrix]
 L1=NNNNNNNNNNNWNNNWW
-L2=NNWNNNNWWWNWNWNWN
-L3=NWEENEEEENEWNEEWN
+L2=NNNNNNNWNNNWNNNWN
+L3=NNEENEEEENEWNEEWN
 L4=NNENNNWEENNWNENWN
 L5=NNNNNNNNNNNNNNNNN
 L6=NNENNNNEENNWNENWN
 L7=NNEWNNWEENNWNENWN
 L8=NWEENEENEEENNEENN
-L9=NWEENEEEENEWNEEWW
-L10=NWNNNNNENNEWNNEWN
+L9=NNEENEEEENEWNEEWW
+L10=NNNNNNNENNEWNNEWN
 L11=NNENNNNEEENWNENWN
 L12=WWWWNWWNWWWNWWWNN
 L13=NNNNNNNNNNNWNNNWW
-L14=NWEENEEEENEWNEEWW
+L14=NNEENEEEENEWNEEWW
 L15=NNENNNNEEENWNENWW
 L16=WWWWNWWNWWWNWWWNW
 L17=WNNNNNNNWNNNWWWWN
