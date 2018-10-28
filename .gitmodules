@@ -6,3 +6,6 @@
 	path = fw/mcu/libopencm3
 	url = https://github.com/libopencm3/libopencm3.git
 
+[submodule "fw/util/lut_generator"]
+	path = fw/util/lut_generator
+	url = https://github.com/gpa-fryk-industries/lut_generator.git
