@@ -552,7 +552,7 @@ UniqueID=4124965C-27BD-4774-97E8-99DA2E73A26B
 Description=EUROPE
 AllowFabrication=1
 ParameterCount=0
-VariationCount=5
+VariationCount=6
 Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-868|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-868|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
 ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-868
 ParamDesignator1=RF1
@@ -582,6 +582,7 @@ Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePa
 Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
 Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
 Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
+Variation6=Designator=Q1|UniqueId=\OPPCFVUV\EPPGBLVB\QVTCGHAF|Kind=1|AlternatePart= 
 ParamVariationCount=12
 
 [ProjectVariant2]
@@ -589,7 +590,7 @@ UniqueID=8CBE7E34-060A-4951-8AEA-FB7D3389F7EC
 Description=AMERICA
 AllowFabrication=0
 ParameterCount=0
-VariationCount=5
+VariationCount=6
 Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-915|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-915|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
 ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-915
 ParamDesignator1=RF1
@@ -619,45 +620,78 @@ Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePa
 Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
 Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
 Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
+Variation6=Designator=Q1|UniqueId=\OPPCFVUV\EPPGBLVB\QVTCGHAF|Kind=1|AlternatePart= 
 ParamVariationCount=12
 
 [GeneratedDocument1]
-DocumentPath=./\gerbers\board.GBL
+DocumentPath=./\gerbers\board.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=./\gerbers\board.GBO
+DocumentPath=./\gerbers\board.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=./\gerbers\board.GBP
+DocumentPath=./\gerbers\board.G1
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=./\gerbers\board.GBS
+DocumentPath=./\gerbers\board.G2
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=./\gerbers\board.GKO
+DocumentPath=./\gerbers\board.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=./\gerbers\board.GTL
+DocumentPath=./\gerbers\board.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=./\gerbers\board.GTO
+DocumentPath=./\gerbers\board.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=./\gerbers\board.GTP
+DocumentPath=./\gerbers\board.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=./\gerbers\board.GTS
+DocumentPath=./\gerbers\board.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument10]
+DocumentPath=./\gerbers\board.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=./\gerbers\board.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=./\gerbers\board.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=./\gerbers\board.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=./\gerbers\board.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=./\gerbers\board.REP
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=./\gerbers\board.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=./\gerbers\board.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument18]
 DocumentPath=Project Outputs for board\Design Rule Check - board.html
 DItemRevisionGUID=
 
@@ -795,7 +829,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=PDFCreator
+TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
