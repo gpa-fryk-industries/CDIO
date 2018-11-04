@@ -660,38 +660,42 @@ DocumentPath=./\gerbers\board.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=./\gerbers\board.GTL
+DocumentPath=./\gerbers\board.GM20
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=./\gerbers\board.GTO
+DocumentPath=./\gerbers\board.GTL
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=./\gerbers\board.GTP
+DocumentPath=./\gerbers\board.GTO
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=./\gerbers\board.GTS
+DocumentPath=./\gerbers\board.GTP
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=./\gerbers\board.LDP
+DocumentPath=./\gerbers\board.GTS
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=./\gerbers\board.REP
+DocumentPath=./\gerbers\board.LDP
 DItemRevisionGUID=
 
 [GeneratedDocument16]
-DocumentPath=./\gerbers\board.RUL
+DocumentPath=./\gerbers\board.REP
 DItemRevisionGUID=
 
 [GeneratedDocument17]
-DocumentPath=./\gerbers\board.TXT
+DocumentPath=./\gerbers\board.RUL
 DItemRevisionGUID=
 
 [GeneratedDocument18]
+DocumentPath=./\gerbers\board.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument19]
 DocumentPath=Project Outputs for board\Design Rule Check - board.html
 DItemRevisionGUID=
 
