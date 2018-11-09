@@ -480,24 +480,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document27]
-DocumentPath=..\altium_stdlib\lib_cnk\Project Outputs for lib_cnk\lib_cnk.IntLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document28]
-DocumentPath=..\altium_stdlib\lib_rohm\Project Outputs for lib_rohm\lib_rohm.IntLib
+DocumentPath=..\altium_stdlib\lib_mechanical\Project Outputs for lib_mechanical\lib_mechanical.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -517,8 +500,8 @@ DocumentUniqueId=
 UniqueID=4124965C-27BD-4774-97E8-99DA2E73A26B
 Description=EUROPE
 AllowFabrication=1
-ParameterCount=0
-VariationCount=5
+ParameterCount=1
+VariationCount=6
 Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-868|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-868|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
 ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-868
 ParamDesignator1=RF1
@@ -544,18 +527,27 @@ ParamVariation11=ParameterName=Signal Integrity|VariantValue=
 ParamDesignator11=RF1
 ParamVariation12=ParameterName=Simulation|VariantValue= 
 ParamDesignator12=RF1
+ParamVariation13=ParameterName=Supplier 1|VariantValue=Mouser
+ParamDesignator13=RF1
+ParamVariation14=ParameterName=Supplier Part Number 1|VariantValue=511-SPSGRF-868
+ParamDesignator14=RF1
 Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePart= 
 Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
 Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
 Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
-ParamVariationCount=12
+Variation6=Designator=Q1|UniqueId=\OPPCFVUV\EPPGBLVB\QVTCGHAF|Kind=1|AlternatePart= 
+ParamVariationCount=14
+
+[Parameter2_1]
+Name=Supplier 1
+Value=Mouser
 
 [ProjectVariant2]
 UniqueID=8CBE7E34-060A-4951-8AEA-FB7D3389F7EC
 Description=AMERICA
 AllowFabrication=0
 ParameterCount=0
-VariationCount=5
+VariationCount=6
 Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-915|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-915|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
 ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-915
 ParamDesignator1=RF1
@@ -581,46 +573,185 @@ ParamVariation11=ParameterName=Signal Integrity|VariantValue=
 ParamDesignator11=RF1
 ParamVariation12=ParameterName=Simulation|VariantValue= 
 ParamDesignator12=RF1
+ParamVariation13=ParameterName=Supplier 1|VariantValue=Mouser
+ParamDesignator13=RF1
+ParamVariation14=ParameterName=Supplier Part Number 1|VariantValue=511-SPSGRF-915
+ParamDesignator14=RF1
 Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePart= 
 Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
 Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
 Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
-ParamVariationCount=12
+Variation6=Designator=Q1|UniqueId=\OPPCFVUV\EPPGBLVB\QVTCGHAF|Kind=1|AlternatePart= 
+ParamVariationCount=14
+
+[ProjectVariant3]
+UniqueID=4124965C-27BD-4774-97E8-99DA2E73A26B
+Description=EUROPE_STRIPPED
+AllowFabrication=1
+ParameterCount=0
+VariationCount=25
+Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-868|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-868|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
+ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-868
+ParamDesignator1=RF1
+ParamVariation2=ParameterName=Component Kind|VariantValue=Standard
+ParamDesignator2=RF1
+ParamVariation3=ParameterName=ComponentLink1Description|VariantValue=datasheet
+ParamDesignator3=RF1
+ParamVariation4=ParameterName=ComponentLink1URL|VariantValue=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf
+ParamDesignator4=RF1
+ParamVariation5=ParameterName=Description|VariantValue=Sub-GHz (868 or 915 MHz) low power programmable RF
+ParamDesignator5=RF1
+ParamVariation6=ParameterName=Footprint|VariantValue=spsgrf
+ParamDesignator6=RF1
+ParamVariation7=ParameterName=Ibis Model|VariantValue= 
+ParamDesignator7=RF1
+ParamVariation8=ParameterName=Library Reference|VariantValue=spsgrf-868
+ParamDesignator8=RF1
+ParamVariation9=ParameterName=PCB3D|VariantValue= 
+ParamDesignator9=RF1
+ParamVariation10=ParameterName=Pin Info|VariantValue= 
+ParamDesignator10=RF1
+ParamVariation11=ParameterName=Signal Integrity|VariantValue= 
+ParamDesignator11=RF1
+ParamVariation12=ParameterName=Simulation|VariantValue= 
+ParamDesignator12=RF1
+ParamVariation13=ParameterName=Supplier 1|VariantValue=Mouser
+ParamDesignator13=RF1
+ParamVariation14=ParameterName=Supplier Part Number 1|VariantValue=511-SPSGRF-868
+ParamDesignator14=RF1
+Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePart= 
+Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
+Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
+Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
+Variation6=Designator=Q1|UniqueId=\OPPCFVUV\EPPGBLVB\QVTCGHAF|Kind=1|AlternatePart= 
+Variation7=Designator=S1|UniqueId=\OPPCFVUV\OUQFRVCS|Kind=1|AlternatePart= 
+Variation8=Designator=U5|UniqueId=\OPPCFVUV\AUOYKDHD\HDIRMKQF|Kind=1|AlternatePart= 
+Variation9=Designator=C16|UniqueId=\OPPCFVUV\AUOYKDHD\VLERCDFX|Kind=1|AlternatePart= 
+Variation10=Designator=R19|UniqueId=\OPPCFVUV\AUOYKDHD\WOSHMORE|Kind=1|AlternatePart= 
+Variation11=Designator=R20|UniqueId=\OPPCFVUV\AUOYKDHD\TIMIELQO|Kind=1|AlternatePart= 
+Variation12=Designator=C28|UniqueId=\OPPCFVUV\AUOYKDHD\URTBFAMN|Kind=1|AlternatePart= 
+Variation13=Designator=C30|UniqueId=\OPPCFVUV\AUOYKDHD\TNRXGGRA|Kind=1|AlternatePart= 
+Variation14=Designator=R26|UniqueId=\OPPCFVUV\AUOYKDHD\IRMRBGYF|Kind=1|AlternatePart= 
+Variation15=Designator=R25|UniqueId=\OPPCFVUV\AUOYKDHD\UDQBLNAS|Kind=1|AlternatePart= 
+Variation16=Designator=R21|UniqueId=\OPPCFVUV\AUOYKDHD\RYERNVSN|Kind=1|AlternatePart= 
+Variation17=Designator=J11|UniqueId=\OPPCFVUV\AUOYKDHD\NVHFJOFY|Kind=1|AlternatePart= 
+Variation18=Designator=R22|UniqueId=\OPPCFVUV\AUOYKDHD\BRDYEVPR|Kind=1|AlternatePart= 
+Variation19=Designator=U9|UniqueId=\OPPCFVUV\AUOYKDHD\OYSQVUCV|Kind=1|AlternatePart= 
+Variation20=Designator=C29|UniqueId=\OPPCFVUV\AUOYKDHD\RGYATMJN|Kind=1|AlternatePart= 
+Variation21=Designator=R23|UniqueId=\OPPCFVUV\AUOYKDHD\YAWCIIUL|Kind=1|AlternatePart= 
+Variation22=Designator=Q4|UniqueId=\OPPCFVUV\AUOYKDHD\WURVLYJP|Kind=1|AlternatePart= 
+Variation23=Designator=R24|UniqueId=\OPPCFVUV\AUOYKDHD\OOGAOQLB|Kind=1|AlternatePart= 
+Variation24=Designator=J5|UniqueId=\OPPCFVUV\WGAVTTHQ\UOBIVXEF|Kind=1|AlternatePart= 
+Variation25=Designator=J6|UniqueId=\OPPCFVUV\OYYRSNVJ|Kind=1|AlternatePart= 
+ParamVariationCount=14
+
+[ProjectVariant4]
+UniqueID=8CBE7E34-060A-4951-8AEA-FB7D3389F7EC
+Description=AMERICA_STRIPPED
+AllowFabrication=0
+ParameterCount=0
+VariationCount=25
+Variation1=Designator=RF1|UniqueId=\OPPCFVUV\WWLRAETL\TKACDTTV|Kind=2|AlternatePart=SPSGRF-915|AltLibLink_LibIdentifierKind=Library Name And Type|AltLibLink_LibraryIdentifier=lib_st.IntLib|AltLibLink_SymbolReference=spsgrf-868|AltLibLink_DesignItemID=spsgrf-915|AltLibLink_UseLibraryName=True|AltLibLink_SourceLibraryName=lib_st.IntLib|AltLibLink_UseDBTableName=True|AltLibLink_DatabaseTableName= |AltLibLink_VaultGUID= |AltLibLink_ItemGUID= |AltLibLink_RevisionGUID= |AltLibLink_Footprint=spsgrf|AltLibLink_IsSameFootprint=True
+ParamVariation1=ParameterName=Comment|VariantValue=SPSGRF-915
+ParamDesignator1=RF1
+ParamVariation2=ParameterName=Component Kind|VariantValue=Standard
+ParamDesignator2=RF1
+ParamVariation3=ParameterName=ComponentLink1Description|VariantValue=datasheet
+ParamDesignator3=RF1
+ParamVariation4=ParameterName=ComponentLink1URL|VariantValue=https://www.mouser.se/datasheet/2/389/spsgrf-955290.pdf
+ParamDesignator4=RF1
+ParamVariation5=ParameterName=Description|VariantValue=Sub-GHz (868 or 915 MHz) low power programmable RF
+ParamDesignator5=RF1
+ParamVariation6=ParameterName=Footprint|VariantValue=spsgrf
+ParamDesignator6=RF1
+ParamVariation7=ParameterName=Ibis Model|VariantValue= 
+ParamDesignator7=RF1
+ParamVariation8=ParameterName=Library Reference|VariantValue=spsgrf-915
+ParamDesignator8=RF1
+ParamVariation9=ParameterName=PCB3D|VariantValue= 
+ParamDesignator9=RF1
+ParamVariation10=ParameterName=Pin Info|VariantValue= 
+ParamDesignator10=RF1
+ParamVariation11=ParameterName=Signal Integrity|VariantValue= 
+ParamDesignator11=RF1
+ParamVariation12=ParameterName=Simulation|VariantValue= 
+ParamDesignator12=RF1
+ParamVariation13=ParameterName=Supplier 1|VariantValue=Mouser
+ParamDesignator13=RF1
+ParamVariation14=ParameterName=Supplier Part Number 1|VariantValue=511-SPSGRF-915
+ParamDesignator14=RF1
+Variation2=Designator=J1|UniqueId=\OPPCFVUV\EPPGBLVB\GYLCRUVG|Kind=1|AlternatePart= 
+Variation3=Designator=J3|UniqueId=\OPPCFVUV\EPPGBLVB\JAERIMXD|Kind=1|AlternatePart= 
+Variation4=Designator=D1|UniqueId=\OPPCFVUV\EPPGBLVB\GOBEIUEJ|Kind=1|AlternatePart= 
+Variation5=Designator=R4|UniqueId=\OPPCFVUV\EPPGBLVB\NTHEPNDX|Kind=1|AlternatePart= 
+Variation6=Designator=Q1|UniqueId=\OPPCFVUV\EPPGBLVB\QVTCGHAF|Kind=1|AlternatePart= 
+Variation7=Designator=U5|UniqueId=\OPPCFVUV\AUOYKDHD\HDIRMKQF|Kind=1|AlternatePart= 
+Variation8=Designator=C16|UniqueId=\OPPCFVUV\AUOYKDHD\VLERCDFX|Kind=1|AlternatePart= 
+Variation9=Designator=R19|UniqueId=\OPPCFVUV\AUOYKDHD\WOSHMORE|Kind=1|AlternatePart= 
+Variation10=Designator=R20|UniqueId=\OPPCFVUV\AUOYKDHD\TIMIELQO|Kind=1|AlternatePart= 
+Variation11=Designator=C28|UniqueId=\OPPCFVUV\AUOYKDHD\URTBFAMN|Kind=1|AlternatePart= 
+Variation12=Designator=C30|UniqueId=\OPPCFVUV\AUOYKDHD\TNRXGGRA|Kind=1|AlternatePart= 
+Variation13=Designator=R26|UniqueId=\OPPCFVUV\AUOYKDHD\IRMRBGYF|Kind=1|AlternatePart= 
+Variation14=Designator=R25|UniqueId=\OPPCFVUV\AUOYKDHD\UDQBLNAS|Kind=1|AlternatePart= 
+Variation15=Designator=R21|UniqueId=\OPPCFVUV\AUOYKDHD\RYERNVSN|Kind=1|AlternatePart= 
+Variation16=Designator=J11|UniqueId=\OPPCFVUV\AUOYKDHD\NVHFJOFY|Kind=1|AlternatePart= 
+Variation17=Designator=R22|UniqueId=\OPPCFVUV\AUOYKDHD\BRDYEVPR|Kind=1|AlternatePart= 
+Variation18=Designator=U9|UniqueId=\OPPCFVUV\AUOYKDHD\OYSQVUCV|Kind=1|AlternatePart= 
+Variation19=Designator=C29|UniqueId=\OPPCFVUV\AUOYKDHD\RGYATMJN|Kind=1|AlternatePart= 
+Variation20=Designator=R23|UniqueId=\OPPCFVUV\AUOYKDHD\YAWCIIUL|Kind=1|AlternatePart= 
+Variation21=Designator=Q4|UniqueId=\OPPCFVUV\AUOYKDHD\WURVLYJP|Kind=1|AlternatePart= 
+Variation22=Designator=R24|UniqueId=\OPPCFVUV\AUOYKDHD\OOGAOQLB|Kind=1|AlternatePart= 
+Variation23=Designator=J5|UniqueId=\OPPCFVUV\WGAVTTHQ\UOBIVXEF|Kind=1|AlternatePart= 
+Variation24=Designator=S1|UniqueId=\OPPCFVUV\OUQFRVCS|Kind=1|AlternatePart= 
+Variation25=Designator=J6|UniqueId=\OPPCFVUV\OYYRSNVJ|Kind=1|AlternatePart= 
+ParamVariationCount=14
 
 [GeneratedDocument1]
-DocumentPath=./\gerbers\board.GBL
+DocumentPath=./\gerbers\board.G1
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=./\gerbers\board.GBO
+DocumentPath=./\gerbers\board.G2
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=./\gerbers\board.GBP
+DocumentPath=./\gerbers\board.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=./\gerbers\board.GBS
+DocumentPath=./\gerbers\board.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=./\gerbers\board.GKO
+DocumentPath=./\gerbers\board.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=./\gerbers\board.GTL
+DocumentPath=./\gerbers\board.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=./\gerbers\board.GTO
+DocumentPath=./\gerbers\board.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=./\gerbers\board.GTP
+DocumentPath=./\gerbers\board.GTL
 DItemRevisionGUID=
 
 [GeneratedDocument9]
+DocumentPath=./\gerbers\board.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=./\gerbers\board.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument11]
 DocumentPath=./\gerbers\board.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=./\gerbers\board.TXT
 DItemRevisionGUID=
 
 [Parameter1]
@@ -923,7 +1054,7 @@ OutputDefault12=0
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=PDFCreator
+TargetPrinter=\\edp-liu-prn01.ad.liu.se\eduPrint-LiU
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
@@ -931,6 +1062,28 @@ OutputDocumentPath1=
 OutputVariantName1=[No Variations]
 OutputDefault1=0
 PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+Configuration1_Name1=ColumnNameFormat
+Configuration1_Item1=CaptionAsName
+Configuration1_Name2=Filter
+Configuration1_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
+Configuration1_Name3=ForceUpdateSettings
+Configuration1_Item3=False
+Configuration1_Name4=General
+Configuration1_Item4=OpenExported=False|AddToProject=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePCBData=False|IncludeVaultData=False|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|BatchMode=5|FormWidth=1591|FormHeight=883|SupplierProdQty=3|SupplierAutoQty=True|SupplierUseCachedPricing=False|SupplierCurrency=<none>|ViewType=0
+Configuration1_Name5=GroupOrder
+Configuration1_Item5=
+Configuration1_Name6=OutputConfigurationParameter1
+Configuration1_Item6=pplierCurrency=<none??
+Configuration1_Name7=SortOrder
+Configuration1_Item7=Designator=Up
+Configuration1_Name8=VisibleOrder
+Configuration1_Item8=Line #=71|Comment=160|Description=218|Designator=188|Variant=77|Quantity=84|value=67|type=114|Footprint=211|Manufacturer 1=118|Manufacturer Part Number 1=186|Manufacturer Lifecycle 1=164|Supplier 1=201|Supplier Part Number 1=268|Supplier Unit Price 1=144|Supplier Subtotal 1=139|Supplier 2=92|Supplier Part Number 2=159|Supplier Unit Price 2=144|Supplier Subtotal 2=139|Supplier 3=92|Supplier Part Number 3=159|Supplier Unit Price 3=144|Supplier Subtotal 3=139|Manufacturer 4=119|Manufacturer Part Number 4=186|Manufacturer Lifecycle 4=164|Supplier 4=92|Supplier Part Number 4=159|Supplier Unit Price 4=144|Supplier Subtotal 4=139|Supplier 5=92|Supplier Part Number 5=159|Supplier Unit Price 5=144|Supplier Subtotal 5=139|Supplier 6=92|Supplier Part Number 6=159|Supplier Unit Price 6=144|Supplier Subtotal 6=139|Manufacturer 7=119|Manufacturer Part Number 7=186|Manufacturer Lifecycle 7=164|Supplier 7=92|Supplier Part Number 7=159|Supplier Unit Price 7=144|Supplier Subtotal 7=139|Supplier 8=92|Supplier Part Number 8=159|Supplier Unit Price 8=144|Supplier Subtotal 8=139|Supplier 9=92|Supplier Part Number 9=159|Supplier Unit Price 9=144|Supplier Subtotal 9=139
+Configuration1_Name9=VisibleOrder_Base
+Configuration1_Item9=Line #=71|Comment=160|Description=218|Designator=188|Variant=77|Quantity=84|value=67|type=114|Footprint=211|Manufacturer 1=118|Manufacturer Part Number 1=186|Manufacturer Lifecycle 1=164|Supplier 1=201|Supplier Part Number 1=268|Supplier Unit Price 1=144|Supplier Subtotal 1=139|Supplier 2=92|Supplier Part Number 2=159|Supplier Unit Price 2=144|Supplier Subtotal 2=139|Supplier 3=92|Supplier Part Number 3=159|Supplier Unit Price 3=144|Supplier Subtotal 3=139|Manufacturer 4=119|Manufacturer Part Number 4=186|Manufacturer Lifecycle 4=164|Supplier 4=92|Supplier Part Number 4=159|Supplier Unit Price 4=144|Supplier Subtotal 4=139|Supplier 5=92|Supplier Part Number 5=159|Supplier Unit Price 5=144|Supplier Subtotal 5=139|Supplier 6=92|Supplier Part Number 6=159|Supplier Unit Price 6=144|Supplier Subtotal 6=139|Manufacturer 7=119|Manufacturer Part Number 7=186|Manufacturer Lifecycle 7=164|Supplier 7=92|Supplier Part Number 7=159|Supplier Unit Price 7=144|Supplier Subtotal 7=139|Supplier 8=92|Supplier Part Number 8=159|Supplier Unit Price 8=144|Supplier Subtotal 8=139|Supplier 9=92|Supplier Part Number 9=159|Supplier Unit Price 9=144|Supplier Subtotal 9=139
+Configuration1_Name10=VisibleOrder_Consolidated
+Configuration1_Item10=Line #=71|Comment=147|Description=388|Designator=97|Quantity=84|Quantity@EUROPE=109|Quantity@AMERICA=114|Price@EUROPE=100|Price@AMERICA=100|Quantity@EUROPE_STRIPPED=100|Price@EUROPE_STRIPPED=100|Quantity@AMERICA_STRIPPED=100|Price@AMERICA_STRIPPED=100|Manufacturer 1=119|Manufacturer Part Number 1=186|Manufacturer Lifecycle 1=164|Supplier 1=92|Supplier Part Number 1=159|Supplier Unit Price 1=144|Supplier Subtotal 1=139|Supplier 2=107|Supplier Part Number 2=159|Supplier Unit Price 2=144|Supplier Subtotal 2=139|Supplier 3=92|Supplier Part Number 3=159|Supplier Unit Price 3=144|Supplier Subtotal 3=139|Manufacturer 4=100|Manufacturer Part Number 4=100|Manufacturer Lifecycle 4=100|Supplier 4=92|Supplier Part Number 4=159|Supplier Unit Price 4=144|Supplier Subtotal 4=139|Supplier 5=100|Supplier Part Number 5=100|Supplier Unit Price 5=100|Supplier Subtotal 5=100|Supplier 6=100|Supplier Part Number 6=100|Supplier Unit Price 6=100|Supplier Subtotal 6=100|Manufacturer 7=100|Manufacturer Part Number 7=100|Manufacturer Lifecycle 7=100|Supplier 7=100|Supplier Part Number 7=100|Supplier Unit Price 7=100|Supplier Subtotal 7=100|Supplier 8=100|Supplier Part Number 8=100|Supplier Unit Price 8=100|Supplier Subtotal 8=100|Supplier 9=100|Supplier Part Number 9=100|Supplier Unit Price 9=100|Supplier Subtotal 9=100
+Configuration1_Name11=VisibleOrder_Flat
+Configuration1_Item11=Line #=71|Comment=69|Description=99|Designator=97|Manufacturer 1=119|Manufacturer Part Number 1=186|Manufacturer Lifecycle 1=164|Supplier 1=92|Supplier Part Number 1=159|Supplier Unit Price 1=144|Supplier Subtotal 1=139|Supplier 2=107|Supplier Part Number 2=159|Supplier Unit Price 2=144|Supplier Subtotal 2=139|Supplier 3=92|Supplier Part Number 3=159|Supplier Unit Price 3=144|Supplier Subtotal 3=139|Manufacturer 4=119|Manufacturer Part Number 4=186|Manufacturer Lifecycle 4=164|Supplier 4=92|Supplier Part Number 4=159|Supplier Unit Price 4=144|Supplier Subtotal 4=139|Supplier 5=92|Supplier Part Number 5=159|Supplier Unit Price 5=144|Supplier Subtotal 5=139|Supplier 6=92|Supplier Part Number 6=159|Supplier Unit Price 6=144|Supplier Subtotal 6=139|Manufacturer 7=119|Manufacturer Part Number 7=186|Manufacturer Lifecycle 7=164|Supplier 7=92|Supplier Part Number 7=159|Supplier Unit Price 7=144|Supplier Subtotal 7=139|Supplier 8=92|Supplier Part Number 8=159|Supplier Unit Price 8=144|Supplier Subtotal 8=139|Supplier 9=92|Supplier Part Number 9=159|Supplier Unit Price 9=144|Supplier Subtotal 9=139
 OutputType2=ComponentCrossReference
 OutputName2=Component Cross Reference Report
 OutputDocumentPath2=
@@ -1587,10 +1740,160 @@ NetClassManualEnabled=1
 NetClassSeparateForBusSections=0
 
 [LibraryUpdateOptions]
-SelectedOnly=0
+SelectedOnly=1
 UpdateVariants=1
 PartTypes=0
-FullReplace=1
+ComponentLibIdentifierKind0=Library Name And Type
+ComponentLibraryIdentifier0=lib_actives.IntLib
+ComponentDesignItemID0=led
+ComponentSymbolReference0=led
+ComponentUpdate0=1
+ComponentIsDeviceSheet0=0
+ComponentLibIdentifierKind1=Library Name And Type
+ComponentLibraryIdentifier1=lib_alps.IntLib
+ComponentDesignItemID1=sllb120300
+ComponentSymbolReference1=sllb120300
+ComponentUpdate1=1
+ComponentIsDeviceSheet1=0
+ComponentLibIdentifierKind2=Library Name And Type
+ComponentLibraryIdentifier2=lib_cnk.IntLib
+ComponentDesignItemID2=pts840esdpksmtrlfs
+ComponentSymbolReference2=pts840esdpksmtrlfs
+ComponentUpdate2=1
+ComponentIsDeviceSheet2=0
+ComponentLibIdentifierKind3=Library Name And Type
+ComponentLibraryIdentifier3=lib_connectors.IntLib
+ComponentDesignItemID3=hdr_2x5
+ComponentSymbolReference3=hdr_2x5
+ComponentUpdate3=1
+ComponentIsDeviceSheet3=0
+ComponentLibIdentifierKind4=Library Name And Type
+ComponentLibraryIdentifier4=lib_connectors.IntLib
+ComponentDesignItemID4=hdr_swd
+ComponentSymbolReference4=hdr_swd
+ComponentUpdate4=1
+ComponentIsDeviceSheet4=0
+ComponentLibIdentifierKind5=Library Name And Type
+ComponentLibraryIdentifier5=lib_cui.IntLib
+ComponentDesignItemID5=cms-15113-078s
+ComponentSymbolReference5=cms-15113-078s
+ComponentUpdate5=1
+ComponentIsDeviceSheet5=0
+ComponentLibIdentifierKind6=Library Name And Type
+ComponentLibraryIdentifier6=lib_cui.IntLib
+ComponentDesignItemID6=sj-43504-smt-tr
+ComponentSymbolReference6=sj-43504-smt-tr
+ComponentUpdate6=1
+ComponentIsDeviceSheet6=0
+ComponentLibIdentifierKind7=Library Name And Type
+ComponentLibraryIdentifier7=lib_invensense.IntLib
+ComponentDesignItemID7=inmp621
+ComponentSymbolReference7=inmp621
+ComponentUpdate7=1
+ComponentIsDeviceSheet7=0
+ComponentLibIdentifierKind8=Library Name And Type
+ComponentLibraryIdentifier8=lib_keystone.IntLib
+ComponentDesignItemID8=ke53
+ComponentSymbolReference8=ke53
+ComponentUpdate8=1
+ComponentIsDeviceSheet8=0
+ComponentLibIdentifierKind9=Library Name And Type
+ComponentLibraryIdentifier9=lib_lattice.IntLib
+ComponentDesignItemID9=ice40up5k-sg48
+ComponentSymbolReference9=ice40up5k-sg48
+ComponentUpdate9=1
+ComponentIsDeviceSheet9=0
+ComponentLibIdentifierKind10=Library Name And Type
+ComponentLibraryIdentifier10=lib_mechanical.IntLib
+ComponentDesignItemID10=mounting_hole
+ComponentSymbolReference10=mounting_hole
+ComponentUpdate10=1
+ComponentIsDeviceSheet10=0
+ComponentLibIdentifierKind11=Library Name And Type
+ComponentLibraryIdentifier11=lib_mechanical.SchLib
+ComponentDesignItemID11=fiducial
+ComponentSymbolReference11=fiducial
+ComponentUpdate11=1
+ComponentIsDeviceSheet11=0
+ComponentLibIdentifierKind12=Library Name And Type
+ComponentLibraryIdentifier12=lib_onsemi.IntLib
+ComponentDesignItemID12=fan3850auc16x
+ComponentSymbolReference12=fan3850auc16x
+ComponentUpdate12=1
+ComponentIsDeviceSheet12=0
+ComponentLibIdentifierKind13=Library Name And Type
+ComponentLibraryIdentifier13=lib_passives.IntLib
+ComponentDesignItemID13=cap
+ComponentSymbolReference13=cap
+ComponentUpdate13=1
+ComponentIsDeviceSheet13=0
+ComponentLibIdentifierKind14=Library Name And Type
+ComponentLibraryIdentifier14=lib_passives.IntLib
+ComponentDesignItemID14=ferrite
+ComponentSymbolReference14=ferrite
+ComponentUpdate14=1
+ComponentIsDeviceSheet14=0
+ComponentLibIdentifierKind15=Library Name And Type
+ComponentLibraryIdentifier15=lib_passives.IntLib
+ComponentDesignItemID15=ind
+ComponentSymbolReference15=ind
+ComponentUpdate15=1
+ComponentIsDeviceSheet15=0
+ComponentLibIdentifierKind16=Library Name And Type
+ComponentLibraryIdentifier16=lib_passives.IntLib
+ComponentDesignItemID16=res
+ComponentSymbolReference16=res
+ComponentUpdate16=1
+ComponentIsDeviceSheet16=0
+ComponentLibIdentifierKind17=Library Name And Type
+ComponentLibraryIdentifier17=lib_rohm.IntLib
+ComponentDesignItemID17=ru1j002yn
+ComponentSymbolReference17=ru1j002yn
+ComponentUpdate17=1
+ComponentIsDeviceSheet17=0
+ComponentLibIdentifierKind18=Library Name And Type
+ComponentLibraryIdentifier18=lib_st.IntLib
+ComponentDesignItemID18=spsgrf-868
+ComponentSymbolReference18=spsgrf-868
+ComponentUpdate18=1
+ComponentIsDeviceSheet18=0
+ComponentLibIdentifierKind19=Library Name And Type
+ComponentLibraryIdentifier19=lib_st.IntLib
+ComponentDesignItemID19=spsgrf-915
+ComponentSymbolReference19=spsgrf-915
+ComponentUpdate19=1
+ComponentIsDeviceSheet19=0
+ComponentLibIdentifierKind20=Library Name And Type
+ComponentLibraryIdentifier20=lib_st.SchLib
+ComponentDesignItemID20=spsgrf-868
+ComponentSymbolReference20=spsgrf-868
+ComponentUpdate20=1
+ComponentIsDeviceSheet20=0
+ComponentLibIdentifierKind21=Library Name And Type
+ComponentLibraryIdentifier21=lib_st.SchLib
+ComponentDesignItemID21=stm32l082kbu6
+ComponentSymbolReference21=stm32l082kbu6
+ComponentUpdate21=1
+ComponentIsDeviceSheet21=0
+ComponentLibIdentifierKind22=Library Name And Type
+ComponentLibraryIdentifier22=lib_ti.IntLib
+ComponentDesignItemID22=tps7a0512pdbvr
+ComponentSymbolReference22=tps7a0512pdbvr
+ComponentUpdate22=1
+ComponentIsDeviceSheet22=0
+ComponentLibIdentifierKind23=Library Name And Type
+ComponentLibraryIdentifier23=lib_ti.SchLib
+ComponentDesignItemID23=tps62740dssr
+ComponentSymbolReference23=tps62740dssr
+ComponentUpdate23=1
+ComponentIsDeviceSheet23=0
+ComponentLibIdentifierKind24=Library Name And Type
+ComponentLibraryIdentifier24=lib_toshiba.SchLib
+ComponentDesignItemID24=ssm6l61nulf
+ComponentSymbolReference24=ssm6l61nulf
+ComponentUpdate24=1
+ComponentIsDeviceSheet24=0
+FullReplace=0
 UpdateDesignatorLock=1
 UpdatePartIDLock=1
 PreserveParameterLocations=1
@@ -1603,6 +1906,180 @@ RemoveParameters=0
 AddModels=1
 RemoveModels=1
 UpdateCurrentModels=1
+ParameterName0=#digikey
+ParameterUpdate0=1
+ParameterName1=#mouser
+ParameterUpdate1=1
+ParameterName2=Comment
+ParameterUpdate2=1
+ParameterName3=Component Kind
+ParameterUpdate3=1
+ParameterName4=ComponentLink1Description
+ParameterUpdate4=1
+ParameterName5=ComponentLink1URL
+ParameterUpdate5=1
+ParameterName6=current
+ParameterUpdate6=1
+ParameterName7=Description
+ParameterUpdate7=1
+ParameterName8=Library Reference
+ParameterUpdate8=1
+ParameterName9=power
+ParameterUpdate9=1
+ParameterName10=Supplier 1
+ParameterUpdate10=1
+ParameterName11=Supplier 2
+ParameterUpdate11=1
+ParameterName12=Supplier Part Number 1
+ParameterUpdate12=1
+ParameterName13=Supplier Part Number 2
+ParameterUpdate13=1
+ParameterName14=type
+ParameterUpdate14=1
+ParameterName15=value
+ParameterUpdate15=1
+ParameterName16=voltage
+ParameterUpdate16=1
+ModelTypeGroup0=PCBLIB
+ModelTypeUpdate0=1
+ModelType0=PCBLIB
+ModelName0=BGA6C48P2X3_86X126X30
+ModelUpdate0=1
+ModelType1=PCBLIB
+ModelName1=CAPC1005X06N
+ModelUpdate1=1
+ModelType2=PCBLIB
+ModelName2=CAPC1210X10N
+ModelUpdate2=1
+ModelType3=PCBLIB
+ModelName3=CAPC1608X08N
+ModelUpdate3=1
+ModelType4=PCBLIB
+ModelName4=CAPC2012X11N
+ModelUpdate4=1
+ModelType5=PCBLIB
+ModelName5=CAPC3216X14N
+ModelUpdate5=1
+ModelType6=PCBLIB
+ModelName6=CAPC3225X14N
+ModelUpdate6=1
+ModelType7=PCBLIB
+ModelName7=CAPC4532X14N
+ModelUpdate7=1
+ModelType8=PCBLIB
+ModelName8=CAPC4564X11N
+ModelUpdate8=1
+ModelType9=PCBLIB
+ModelName9=CAPCP1005X06N
+ModelUpdate9=1
+ModelType10=PCBLIB
+ModelName10=CAPCP1608X08N
+ModelUpdate10=1
+ModelType11=PCBLIB
+ModelName11=CAPCP2012X11N
+ModelUpdate11=1
+ModelType12=PCBLIB
+ModelName12=CAPCP3216X14N
+ModelUpdate12=1
+ModelType13=PCBLIB
+ModelName13=cms-15113-078s
+ModelUpdate13=1
+ModelType14=PCBLIB
+ModelName14=fiducial_1_3
+ModelUpdate14=1
+ModelType15=PCBLIB
+ModelName15=hdr_2x5_50mil
+ModelUpdate15=1
+ModelType16=PCBLIB
+ModelName16=INDC1005X06N
+ModelUpdate16=1
+ModelType17=PCBLIB
+ModelName17=INDC1608X08N
+ModelUpdate17=1
+ModelType18=PCBLIB
+ModelName18=INDC2009X12N
+ModelUpdate18=1
+ModelType19=PCBLIB
+ModelName19=INDC2012X11N
+ModelUpdate19=1
+ModelType20=PCBLIB
+ModelName20=INDC2520X23N
+ModelUpdate20=1
+ModelType21=PCBLIB
+ModelName21=INDC3216X20N
+ModelUpdate21=1
+ModelType22=PCBLIB
+ModelName22=INDC4040X18N
+ModelUpdate22=1
+ModelType23=PCBLIB
+ModelName23=INDC4532X28N
+ModelUpdate23=1
+ModelType24=PCBLIB
+ModelName24=INDC4625X38N
+ModelUpdate24=1
+ModelType25=PCBLIB
+ModelName25=ke53
+ModelUpdate25=1
+ModelType26=PCBLIB
+ModelName26=mount_m2l
+ModelUpdate26=1
+ModelType27=PCBLIB
+ModelName27=mount_m3l
+ModelUpdate27=1
+ModelType28=PCBLIB
+ModelName28=PCBComponent_1
+ModelUpdate28=1
+ModelType29=PCBLIB
+ModelName29=QFN127P600-8N-ICE40UP5K
+ModelUpdate29=1
+ModelType30=PCBLIB
+ModelName30=QFN50P500X500X60_HS-33N
+ModelUpdate30=1
+ModelType31=PCBLIB
+ModelName31=RESC1005X04N
+ModelUpdate31=1
+ModelType32=PCBLIB
+ModelName32=RESC1608X06N
+ModelUpdate32=1
+ModelType33=PCBLIB
+ModelName33=RESC2012X06N
+ModelUpdate33=1
+ModelType34=PCBLIB
+ModelName34=RESC3216X07N
+ModelUpdate34=1
+ModelType35=PCBLIB
+ModelName35=RESC3225X07N
+ModelUpdate35=1
+ModelType36=PCBLIB
+ModelName36=RESC5025X07N
+ModelUpdate36=1
+ModelType37=PCBLIB
+ModelName37=RESC6332X07N
+ModelUpdate37=1
+ModelType38=PCBLIB
+ModelName38=SJ-43504-SMT-TR
+ModelUpdate38=1
+ModelType39=PCBLIB
+ModelName39=sllb120300
+ModelUpdate39=1
+ModelType40=PCBLIB
+ModelName40=SON50P200X80_HS-13N
+ModelUpdate40=1
+ModelType41=PCBLIB
+ModelName41=SON65P200X80_HS-7N
+ModelUpdate41=1
+ModelType42=PCBLIB
+ModelName42=SON70P300X90-4N
+ModelUpdate42=1
+ModelType43=PCBLIB
+ModelName43=SOT95P280X145-5N
+ModelUpdate43=1
+ModelType44=PCBLIB
+ModelName44=SOTFL65P210X105-3N
+ModelUpdate44=1
+ModelType45=PCBLIB
+ModelName45=spsgrf
+ModelUpdate45=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
