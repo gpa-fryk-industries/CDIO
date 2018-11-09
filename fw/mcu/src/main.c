@@ -5,6 +5,8 @@
 #include <libopencm3/stm32/i2c.h>
 
 #include "fdt/fdt_utils.h"
+#include "fdt/dtb_parser.h"
+#include "fpga/fpga_config.h"
 
 
 #define GPIO_I2C_PORT GPIOA
@@ -81,8 +83,15 @@ int main(){
     /* Init Serial */
     init_serial();
 
+    fdt_header_t* fdt = &config;
+    fdt_token* root = fdt_get_tokens(fdt);
+    fdt_token* bootmsg = fdt_node_get_prop(fdt, root, "bootmsg", false);
+
+
     /* Sanity LED */
-    gpio_set(LED_PORT, LED_PIN);
+    gpio_set(LED_PORT, (uint16_t)get_byte(0));
+
+
 
     while(true){
 

@@ -1,13 +1,14 @@
 /dts-v1/;
 
 /{
-    compatible = "gpa,std";
+    compatible = "gfi,cdi-042";
 
     chosen {
         enable-semihosting;
     };
 
     fpga {
+        buffer = < 512 >;
 
     };
 
