@@ -1,15 +1,18 @@
 /dts-v1/;
 
 /{
-    /* Enable serial terminal (NOTE: conflicts with SWD so cannot debug simultaneously) */
+    /* Enable serial terminal (NOTE: conflicts with SWD so cannot debug simultaneously!) */
     //enable-serial;
 
     /* Enable FPGA power and configuration */
     enable-fpga;
 
     fpga {
-        buffer = < 512 >;
+        /*TODO: Add fpga config options?*/
+    };
 
+    radio {
+        /*TODO: Add radio config options?*/
     };
 
 };
