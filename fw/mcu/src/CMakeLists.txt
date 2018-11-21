@@ -42,7 +42,7 @@ add_fdt_target(config config.dts)
 add_subdirectory(fpga)
 
 ### Project ###
-set(SOURCE_FILES main.c)
+set(SOURCE_FILES main.c pins.h)
 add_executable(src ${SOURCE_FILES})
 add_dependencies(src libopencm3)
 target_link_libraries(src ${OCM3_LIBS})

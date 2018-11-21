@@ -4,6 +4,10 @@
 *.o
 *.vcd
 *_testbench
+*.lst
+
+# Clion
 cmake-*
 .idea
+
 

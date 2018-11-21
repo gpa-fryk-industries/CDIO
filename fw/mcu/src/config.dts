@@ -1,11 +1,11 @@
 /dts-v1/;
 
 /{
-    compatible = "gfi,cdi-042";
+    /* Enable serial terminal (NOTE: conflicts with SWD so cannot debug simultaneously) */
+    //enable-serial;
 
-    chosen {
-        enable-semihosting;
-    };
+    /* Enable FPGA power and configuration */
+    enable-fpga;
 
     fpga {
         buffer = < 512 >;
