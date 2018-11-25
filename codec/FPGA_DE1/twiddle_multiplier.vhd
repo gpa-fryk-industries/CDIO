@@ -34,7 +34,7 @@ begin
 	R <= x_real*twiddle_real - x_imag*twiddle_imag;
 	I <= x_real*twiddle_imag + x_imag*twiddle_real;
 
-	y_real <= R(2*N_bit) & R(2*N_bit - 3 downto N_bit-1);
-	y_imag <= I(2*N_bit) & I(2*N_bit - 3 downto N_bit-1);
+	y_real <= shift_right( signed(R) , N_bit-1 )(N_bit-1 downto 0);
+	y_imag <= shift_right( signed(I) , N_bit-1 )(N_bit-1 downto 0);
 	
 end arch_fft_twiddle_multiplier;
