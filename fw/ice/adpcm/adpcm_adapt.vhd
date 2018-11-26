@@ -44,7 +44,8 @@ end adpcm_adapt;
 
 architecture arch_adpcm_adapt of adpcm_adapt is
 	
-	signal pred_sample     : signed(15 downto 0) := (others => '0'); -- Predicted sample for next cycle. Initialize as 0.
+	signal pred_sample     : signed(16 downto 0) := (others => '0'); -- Predicted sample for next cycle. Initialize as 0.
+	signal pred_sample_out : signed(15 downto 0) := (others => '0'); -- Predicted sample for next cycle. Initialize as 0.
 	signal pred_index      : integer := 0; -- Predicted index for next cycle. Initialize as 0.
 	
 	signal sample_padded : signed(15 downto 0); -- Padded sample, algorithm is working with 16 bit numbers in this implementation. 
@@ -63,7 +64,7 @@ architecture arch_adpcm_adapt of adpcm_adapt is
 												15289, 16818, 18500, 20350, 22385, 24623, 27086, 29794, 32767);
 												
 	-- Look up table to generate index in StepSizeTable.											
-	signal IndexTable	  : my_array_t1(integer range 0 to 15) := (-1, -1, -1, -1 , 2, 4, 6, -1, -1, -1, -1, 2, 4, 6, 8); 
+	signal IndexTable	  : my_array_t1(integer range 0 to 15) := (-1, -1, -1, -1 , 2, 4, 6,8, -1, -1, -1, -1, 2, 4, 6, 8); 
 																											
 	
 begin   
@@ -75,7 +76,8 @@ begin
 		-- Go back to initial "state".
 		if (Reset = '1') then
 		
-			pred_sample <= (others => '0'); 
+			pred_sample     <= (others => '0'); 
+			pred_sample_out <= (others => '0'); 
 			pred_index <= 0;
 		
 		-- 
@@ -83,9 +85,9 @@ begin
 			
 			-- Is the sign of Code_in negative / is MSB '1'?
 			if(Code_in(N) = '1') then		
-				pred_sample <= pred_sample - Diffq_in;	
+				pred_sample <=  ("0" & pred_sample_out) - ("0" & Diffq_in);	
 			else
-				pred_sample <= pred_sample +  Diffq_in;
+				pred_sample <= ("0" & pred_sample_out) +  ("0" & Diffq_in);
 			end if;
 			
 			
@@ -104,37 +106,33 @@ begin
 			end if;
 			
 		end if;
-
+		
+		
+		--Prevent overflow/underflow
+		
+		if ( to_integer(pred_sample) >  ( (2**15) -1 ) ) then
+	
+			pred_sample_out <= to_signed( (2**15) - 1 , 16);
+	
+		elsif ( to_integer(pred_sample) < ( -(2**15) ) ) then
+		
+			pred_sample_out <= to_signed( -(2**15) , 16);
+		
+		else
+			pred_sample_out <= to_signed( to_integer( pred_sample ), 16 );
+	
+		end if;
 		
 	end process;
 	
 	
-	-- Below is code to prevent overflow/underflow. Not yet tested so kept commented out at the moment.
-	
---	process(pred_sample) begin
---	
---	if to_integer(pred_sample) >  ( (2**15) -1 )  then
---	
---		pred_sample_out <= to_signed( (2**15) - 1 , 16);
---	
---	elsif to_integer(pred_sample) < ( -(2**15) ) then
---		
---		pred_sample_out <= to_signed( -(2**15) , 16);
---		
---	else
---		pred_sample_out <= to_signed( to_integer( pred_sample ), 16 );
---	
---	end if;
---	
---	end process;
-	
 	Sample_padded <= Sample_in & "00000000"; -- Scale input signal to 16 bit.
 	
 
-	Diff_out <=  ( Sample_padded - pred_sample ); 
+	Diff_out <=  ( Sample_padded - pred_sample_out ); 
 	Step_out <= to_signed(StepSizeTable(pred_index) , 16 ); 
 	
-	y_signal <= pred_sample(15 downto 8); -- Scale back output as an 8 bit number.
+	y_signal <= pred_sample_out(15 downto 8); -- Scale back output as an 8 bit number.
 	
 	
 	-- This part might not be necessary since length of Code_in is generic in its declaration. Keep it if length of encoded should be 4 bits regardless
@@ -146,13 +144,4 @@ begin
 	
 	-- y_code <= Code_in and to_unsigned((2**(N+1) -1 ), 4); 
 	
-	
-	
 end arch_adpcm_adapt;
-
-
-
-
-
-
-
