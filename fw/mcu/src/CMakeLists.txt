@@ -13,7 +13,7 @@ set(CMAKE_CXX_COMPILER "arm-none-eabi-g++")
 set(CMAKE_ASM_COMPILER "arm-none-eabi-gcc")
 
 ### LIBOPENCM3 ###
-set(LIBOCM3 ../libopencm3)
+set(LIBOCM3 ${CMAKE_CURRENT_SOURCE_DIR}/../libopencm3)
 set(DEVICE stm32l082kbu)
 include(libopencm3.cmake)
 
@@ -42,7 +42,7 @@ add_fdt_target(config config.dts)
 add_subdirectory(fpga)
 
 ### Project ###
-set(SOURCE_FILES main.c pins.h)
+set(SOURCE_FILES main.c pins.h radio/spirit1.c radio/spirit1.h)
 add_executable(src ${SOURCE_FILES})
 add_dependencies(src libopencm3)
 target_link_libraries(src ${OCM3_LIBS})

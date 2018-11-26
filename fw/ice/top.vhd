@@ -3,21 +3,25 @@ use ieee.std_logic_1164.all;
 
 entity top is
 	port (
-		clk, rst: in std_logic;
-		led : out std_logic	
+		CLK_MCO, RST: in std_logic;
+		ATT : out std_logic	
 	);
 end top;
 
 architecture arch_top of top is
+	signal test : std_logic;
 begin
 
 
-	process(clk, rst)
+	process(CLK_MCO, RST)
 
 	begin
-		if rising_edge(clk) then
-			led <= not led;
+		if rising_edge(CLK_MCO) then
+			test <= not test;
 		end if;
+	
 	end process;
+
+	ATT <= test;
 
 end arch_top;

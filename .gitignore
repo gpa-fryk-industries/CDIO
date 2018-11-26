@@ -1,6 +1,9 @@
 #Office garbage
 ~*
 
+# Clion garbage
+cmake-*/
+.idea/
 
 # Prerequisites
 *.d

@@ -9,17 +9,16 @@
 #include "fpga/fpga_config.h"
 #include "pins.h"
 
-
-#define GPIO_I2C_PORT GPIOA
-#define GPIO_I2C_SCL GPIO9
-#define GPIO_I2C_SDA GPIO10
-
-
-
-#define LED_PORT GPIOA
-#define LED_PIN GPIO5
-
 FDT_FILE(config);
+
+bool serial_enabled = false;
+
+/* set STM32 to clock by 48MHz from HSI oscillator */
+static void clock_setup(void)
+{
+    rcc_set_sysclk_source(RCC_HSI16);
+    rcc_set_mco(RCC_CFGR_MCO_HSI16);
+}
 
 void init_gpio(){
     /* Enable GPIO clocks */
@@ -31,6 +30,17 @@ void init_gpio(){
     gpio_set_output_options(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PB_PMIC_AUX_EN);
     gpio_clear(GPIOB, PB_PMIC_AUX_EN);
 
+    /*  */
+
+}
+
+void init_fpga(){
+    gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, PA_FPGA_GCLK);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_100MHZ, PA_FPGA_GCLK);
+    gpio_set_af(GPIOA, GPIO_AF0, PA_FPGA_GCLK);
+
+    /* clock output on pin PA8 (allows checking with scope) */
+    rcc_set_mco(RCC_CFGR_MCOPRE_DIV1);
 }
 
 static void init_serial(void)
@@ -46,7 +56,6 @@ static void init_serial(void)
 
     /* Configure USART peripheral, 9800 8N1 */
     usart_set_mode(USART1, USART_MODE_TX_RX);
-
     usart_set_baudrate(USART1, 9800);
     usart_set_databits(USART1, 8);
     usart_set_parity(USART1, USART_PARITY_NONE);
@@ -54,7 +63,7 @@ static void init_serial(void)
 
     /* Enable */
     usart_enable(USART1);
-
+    serial_enabled = true;
 }
 
 int main(){
@@ -73,13 +82,14 @@ int main(){
     /* Check the 'enable-fpga' tag and power-up/configure if found */
     if(fdt_node_get_prop(fdt, root, "enable-fpga", false)){
         gpio_set(GPIOB, PB_PMIC_AUX_EN);
-
+        gpio_set(GPIOB, PA_FPGA_CRESET);
     }else{
         gpio_clear(GPIOB, PB_PMIC_AUX_EN);
+        gpio_clear(GPIOB, PA_FPGA_CRESET);
     }
 
     while(true){
-
+        get_byte(0);
     }
 
     return 0;

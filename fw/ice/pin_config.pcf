@@ -1,0 +1,5 @@
+###IOSet List 9
+set_io CLK_MCO 20
+set_io ATT 18
+set_io RST 44
+

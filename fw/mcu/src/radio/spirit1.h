@@ -1,0 +1,321 @@
+//
+// Created by atmelfan on 2018-11-25.
+//
+
+#ifndef PROJECT_SPIRIT1_H
+#define PROJECT_SPIRIT1_H
+
+#include <stdint.h>
+
+/**
+ * SPIRIT1 Commands
+ * Commands are sent over SPI to control the chipset
+ */
+typedef enum {
+    SPIRIT1_CMD_TX          = 0x60, /* Start to transmit */
+    SPIRIT1_CMD_RX          = 0x61, /* Start to receive */
+    SPIRIT1_CMD_READY       = 0x62, /* Go to READY */
+    SPIRIT1_CMD_STANDBY     = 0x63, /* Go to STANDBY */
+    SPIRIT1_CMD_SLEEP       = 0x64, /* Go to SLEEP */
+    SPIRIT1_CMD_LOCKRX      = 0x65, /* Go to LOCK with RX config */
+    SPIRIT1_CMD_LOCKTX      = 0x66, /* Go to LOCK with TX config */
+    SPIRIT1_CMD_SABORT      = 0x67, /* Exit RX/TX and go to READY */
+    SPIRIT1_CMD_LDCRELOAD   = 0x68, /* Reload the LDC timer */
+    SPIRIT1_CMD_SEQ_UPDATE  = 0x69, /* Reload packet seq counter */
+    SPIRIT1_CMD_AES_ENC     = 0x6A, /* Start encryption routine */
+    SPIRIT1_CMD_AES_KEY     = 0x6B, /* Start to compute key for DEC */
+    SPIRIT1_CMD_AES_DEC     = 0x6C, /* Start decryption with key */
+    SPIRIT1_CMD_AES_KEYDEC  = 0x6D, /* Compute key and start DEC */
+    SPIRIT1_CMD_SRES        = 0x70, /* Reset */
+    SPIRIT1_CMD_FLUSHRXFIFO = 0x71, /* Clean RX FIFO */
+    SPIRIT1_CMD_FLUSHTXFIFO = 0x72  /* Clean TX FIFO */
+            /* OTHERS => ERROR */
+} spirit1_command_t;
+
+/**
+ * SPIRIT1 States
+ * The chipset have multiple modes of operation with different effects and valid commands
+ * Modes not in this list should be interpreted as an error.
+ */
+typedef enum {
+    SPIRIT1_STATE_SHUTDOWN  = 0x00, /* SHOULD NEVER OCCUR! */
+    SPIRIT1_STATE_STANDBY   = 0x40, /* XTAL OFF, RF OFF */
+    SPIRIT1_STATE_SLEEP     = 0x36, /* XTAL OFF, RF OFF */
+    SPIRIT1_STATE_READY     = 0x03, /* XTAL ON, RF OFF */
+    SPIRIT1_STATE_LOCK      = 0x0F, /* XTAL ON, RF ON */
+    SPIRIT1_STATE_RX        = 0x33, /* XTAL ON, RF ON */
+    SPIRIT1_STATE_TX        = 0x5F  /* XTAL ON, RF ON */
+            /* OTHERS => ERROR */
+} spirit1_state_t;
+
+/**
+ * SPIRIT1 Registers
+ * Chipset register addresses
+ */
+typedef enum {
+    /** General configuration registers **/
+    SPIRIT1_REG_ANA_FUNC_CONF1 = 0x00,
+    SPIRIT1_REG_ANA_FUNC_CONF0 = 0x01,
+    SPIRIT1_REG_GPIO3_CONF = 0x02,
+    SPIRIT1_REG_GPIO2_CONF = 0x03,
+    SPIRIT1_REG_GPIO1_CONF = 0x04,
+    SPIRIT1_REG_GPIO0_CONF = 0x05,
+    SPIRIT1_REG_MCU_CK_CONF = 0x06,
+    SPIRIT1_REG_XO_RCO_TEST = 0xB4,
+    SPIRIT1_REG_SYNTH_CONFIG0 = 0x9F,
+    SPIRIT1_REG_SYNTH_CONFIG1 = 0x9E,
+    SPIRIT1_REG_IF_OFFSET_ANA = 0x07,
+
+    /** Radio configuration registers (analog blocks) **/
+    SPIRIT1_REG_SYNT3 = 0x08,
+    SPIRIT1_REG_SYNT2 = 0x09,
+    SPIRIT1_REG_SYNT1 = 0x0A,
+    SPIRIT1_REG_SYNT0 = 0x0B,
+    SPIRIT1_REG_CHSPACE = 0x0C,
+    SPIRIT1_REG_IF_OFFSET_DIG = 0x0D,
+    SPIRIT1_REG_FC_OFFSET1 = 0x0E,
+    SPIRIT1_REG_FC_OFFSET0 = 0x0F,
+    SPIRIT1_REG_PA_POWER8 = 0x10,
+    SPIRIT1_REG_PA_POWER7 = 0x11,
+    SPIRIT1_REG_PA_POWER6 = 0x12,
+    SPIRIT1_REG_PA_POWER5 = 0x13,
+    SPIRIT1_REG_PA_POWER4 = 0x14,
+    SPIRIT1_REG_PA_POWER3 = 0x15,
+    SPIRIT1_REG_PA_POWER2 = 0x16,
+    SPIRIT1_REG_PA_POWER1 = 0x17,
+    SPIRIT1_REG_PA_POWER0 = 0x18,
+
+    /** Radio configuration registers (digital blocks) **/
+    SPIRIT1_REG_MOD1 = 0x1A,
+    SPIRIT1_REG_MOD0 = 0x1B,
+    SPIRIT1_REG_FDEV0 = 0x1C,
+    SPIRIT1_REG_CHFLT = 0x1D,
+    SPIRIT1_REG_AFC2 = 0x1E,
+    SPIRIT1_REG_AFC1 = 0x1F,
+    SPIRIT1_REG_AFC0 = 0x20,
+    SPIRIT1_REG_RSSI_FLT = 0x21,
+    SPIRIT1_REG_RSSI_TH = 0x22,
+    SPIRIT1_REG_CLOCKREC = 0x23,
+    SPIRIT1_REG_AGCCTRL2 = 0x24,
+    SPIRIT1_REG_AGCCTRL1 = 0x25,
+    SPIRIT1_REG_AGCCTRL0 = 0x26,
+    SPIRIT1_REG_ANT_SELECT_CONF = 0x27,
+
+    /** Packet/protocol configuration registers **/
+    SPIRIT1_REG_PCKTCTRL4 = 0x30,
+    SPIRIT1_REG_PCKTCTRL3 = 0x31,
+    SPIRIT1_REG_PCKTCTRL2 = 0x32,
+    SPIRIT1_REG_PCKTCTRL1 = 0x33,
+    SPIRIT1_REG_PCKTLEN1 = 0x34,
+    SPIRIT1_REG_PCKTLEN0 = 0x35,
+    SPIRIT1_REG_SYNC4 = 0x36,
+    SPIRIT1_REG_SYNC3 = 0x37,
+    SPIRIT1_REG_SYNC2 = 0x38,
+    SPIRIT1_REG_SYNC1 = 0x39,
+    SPIRIT1_REG_QI = 0x3A,
+    SPIRIT1_REG_MBUS_PRMBL = 0x3B,
+    SPIRIT1_REG_MBUS_PSTMBL = 0x3C,
+    SPIRIT1_REG_MBUS_CTRL = 0x3D,
+    SPIRIT1_REG_FIFO_CONFIG3 = 0x3E,
+    SPIRIT1_REG_FIFO_CONFIG2 = 0x3F,
+    SPIRIT1_REG_FIFO_CONFIG1 = 0x40,
+    SPIRIT1_REG_FIFO_CONFIG0 = 0x41,
+    SPIRIT1_REG_PCKT_GOALS12 = 0x42,
+    SPIRIT1_REG_PCKT_GOALS11 = 0x43,
+    SPIRIT1_REG_PCKT_GOALS10 = 0x44,
+    SPIRIT1_REG_PCKT_GOALS9 = 0x45,
+    SPIRIT1_REG_PCKT_GOALS8 = 0x46,
+    SPIRIT1_REG_PCKT_GOALS7 = 0x47,
+    SPIRIT1_REG_PCKT_GOALS6 = 0x48,
+    SPIRIT1_REG_PCKT_GOALS5 = 0x49,
+    SPIRIT1_REG_PCKT_GOALS4 = 0x4A,
+    SPIRIT1_REG_PCKT_GOALS3 = 0x4B,
+    SPIRIT1_REG_PCKT_GOALS2 = 0x4C,
+    SPIRIT1_REG_PCKT_GOALS1 = 0x4D,
+    SPIRIT1_REG_PCKT_GOALS0 = 0x4E,
+    SPIRIT1_REG_PCKT_OPTIONS = 0x4F,
+    SPIRIT1_REG_PROTOCOL2 = 0x50,
+    SPIRIT1_REG_PROTOCOL1 = 0x51,
+    SPIRIT1_REG_PROTOCOL0 = 0x52,
+    SPIRIT1_REG_TIMERS5 = 0x53,
+    SPIRIT1_REG_TIMERS4 = 0x54,
+    SPIRIT1_REG_TIMERS3 = 0x55,
+    SPIRIT1_REG_TIMERS2 = 0x56,
+    SPIRIT1_REG_TIMERS1 = 0x57,
+    SPIRIT1_REG_TIMERS0 = 0x58,
+    SPIRIT1_REG_CSMA_CONFIG3 = 0x64,
+    SPIRIT1_REG_CSMA_CONFIG2 = 0x65,
+    SPIRIT1_REG_CSMA_CONFIG1 = 0x66,
+    SPIRIT1_REG_CSMA_CONFIG0 = 0x67,
+    SPIRIT1_REG_TX_CTRL_FIELD3 = 0x68,
+    SPIRIT1_REG_TX_CTRL_FIELD2 = 0x69,
+    SPIRIT1_REG_TX_CTRL_FIELD1 = 0x6A,
+    SPIRIT1_REG_TX_CTRL_FIELD0 = 0x6B,
+    SPIRIT1_REG_PM_CONFIG2 = 0xA4,
+    SPIRIT1_REG_PM_CONFIG1 = 0xA5,
+    SPIRIT1_REG_PM_CONFIG0 = 0xA6,
+    SPIRIT1_REG_XO_RCO_CONFIG = 0xA7,
+    SPIRIT1_REG_TEST_SELECT = 0xA8,
+    SPIRIT1_REG_PM_TEST = 0xB2,
+
+    /** Frequently used registers **/
+    SPIRIT1_REG_CHNUM = 0x6C,
+    SPIRIT1_REG_VCO_CONFIG = 0xA1,
+    SPIRIT1_REG_RCO_CALIBR_IN2 = 0x6D,
+    SPIRIT1_REG_RCO_CALIBR_IN1 = 0x6E,
+    SPIRIT1_REG_RCO_CALIBR_IN0 = 0x6F,
+
+    SPIRIT1_REG_AES_KEY_IN15 = 0x70,
+    SPIRIT1_REG_AES_KEY_IN14 = 0x71,
+    SPIRIT1_REG_AES_KEY_IN13 = 0x72,
+    SPIRIT1_REG_AES_KEY_IN12 = 0x73,
+    SPIRIT1_REG_AES_KEY_IN11 = 0x74,
+    SPIRIT1_REG_AES_KEY_IN10 = 0x75,
+    SPIRIT1_REG_AES_KEY_IN9 = 0x76,
+    SPIRIT1_REG_AES_KEY_IN8 = 0x77,
+    SPIRIT1_REG_AES_KEY_IN7 = 0x78,
+    SPIRIT1_REG_AES_KEY_IN6 = 0x79,
+    SPIRIT1_REG_AES_KEY_IN5 = 0x7A,
+    SPIRIT1_REG_AES_KEY_IN4 = 0x7B,
+    SPIRIT1_REG_AES_KEY_IN3 = 0x7C,
+    SPIRIT1_REG_AES_KEY_IN2 = 0x7D,
+    SPIRIT1_REG_AES_KEY_IN1 = 0x7E,
+    SPIRIT1_REG_AES_KEY_IN0 = 0x7F,
+
+    SPIRIT1_REG_AES_DATA_IN15 = 0x80,
+    SPIRIT1_REG_AES_DATA_IN14 = 0x81,
+    SPIRIT1_REG_AES_DATA_IN13 = 0x82,
+    SPIRIT1_REG_AES_DATA_IN12 = 0x83,
+    SPIRIT1_REG_AES_DATA_IN11 = 0x84,
+    SPIRIT1_REG_AES_DATA_IN10 = 0x85,
+    SPIRIT1_REG_AES_DATA_IN9 = 0x86,
+    SPIRIT1_REG_AES_DATA_IN8 = 0x87,
+    SPIRIT1_REG_AES_DATA_IN7 = 0x88,
+    SPIRIT1_REG_AES_DATA_IN6 = 0x89,
+    SPIRIT1_REG_AES_DATA_IN5 = 0x8A,
+    SPIRIT1_REG_AES_DATA_IN4 = 0x8B,
+    SPIRIT1_REG_AES_DATA_IN3 = 0x8C,
+    SPIRIT1_REG_AES_DATA_IN2 = 0x8D,
+    SPIRIT1_REG_AES_DATA_IN1 = 0x8E,
+    SPIRIT1_REG_AES_DATA_IN0 = 0x8F,
+
+    SPIRIT1_REG_IRQ_MASK3 = 0X90,
+    SPIRIT1_REG_IRQ_MASK2 = 0X91,
+    SPIRIT1_REG_IRQ_MASK1 = 0X92,
+    SPIRIT1_REG_IRQ_MASK0 = 0X93,
+    SPIRIT1_REG_DEM_CONFIG = 0xA3,
+    SPIRIT1_REG_PM_CONFIG = 0xA4,
+    SPIRIT1_REG_MC_STATE1 = 0xC0,
+    SPIRIT1_REG_MC_STATE0 = 0xC1,
+    SPIRIT1_REG_TX_PCKT_INFO = 0xC2,
+    SPIRIT1_REG_RX_PCKT_INFO = 0xC3,
+    SPIRIT1_REG_AFC_CORR = 0xC4,
+    SPIRIT1_REG_LINK_QUALIF2 = 0xC5,
+    SPIRIT1_REG_LINK_QUALIF1 = 0xC6,
+    SPIRIT1_REG_LINK_QUALIF0 = 0xC7,
+    SPIRIT1_REG_RSSI_LEVEL = 0xC8,
+    SPIRIT1_REG_RX_PCKT_LEN1 = 0xC9,
+    SPIRIT1_REG_RX_PCKT_LEN0 = 0xCA,
+    SPIRIT1_REG_CRC_FIELD2 = 0xCB,
+    SPIRIT1_REG_CRC_FIELD1 = 0xCC,
+    SPIRIT1_REG_CRC_FIELD0 = 0xCD,
+    SPIRIT1_REG_RX_CTRL_FIELD3 = 0xCE,
+    SPIRIT1_REG_RX_CTRL_FIELD2 = 0xCF,
+    SPIRIT1_REG_RX_CTRL_FIELD1 = 0xD0,
+    SPIRIT1_REG_RX_CTRL_FIELD0 = 0xD1,
+    SPIRIT1_REG_RX_ADDR_FIELD1 = 0xD2,
+    SPIRIT1_REG_RX_ADDR_FIELD0 = 0xD3,
+    SPIRIT1_REG_AES_DATA_OUT15 = 0xD4,
+    SPIRIT1_REG_AES_DATA_OUT14 = 0xD5,
+    SPIRIT1_REG_AES_DATA_OUT13 = 0xD6,
+    SPIRIT1_REG_AES_DATA_OUT12 = 0xD7,
+    SPIRIT1_REG_AES_DATA_OUT11 = 0xD8,
+    SPIRIT1_REG_AES_DATA_OUT10 = 0xD9,
+    SPIRIT1_REG_AES_DATA_OUT9 = 0xDA,
+    SPIRIT1_REG_AES_DATA_OUT8 = 0xDB,
+    SPIRIT1_REG_AES_DATA_OUT7 = 0xDC,
+    SPIRIT1_REG_AES_DATA_OUT6 = 0xDD,
+    SPIRIT1_REG_AES_DATA_OUT5 = 0xDE,
+    SPIRIT1_REG_AES_DATA_OUT4 = 0xDF,
+    SPIRIT1_REG_AES_DATA_OUT3 = 0xE0,
+    SPIRIT1_REG_AES_DATA_OUT2 = 0xE1,
+    SPIRIT1_REG_AES_DATA_OUT1 = 0xE2,
+    SPIRIT1_REG_AES_DATA_OUT0 = 0xE3,
+    SPIRIT1_REG_RCO_VCO_CALIBR_OUT1 = 0xE4,
+    SPIRIT1_REG_RCO_VCO_CALIBR_OUT0 = 0xE5,
+    SPIRIT1_REG_LINEAR_FIFO_STATUS1 = 0xE6,
+    SPIRIT1_REG_LINEAR_FIFO_STATUS0 = 0xE7,
+    SPIRIT1_REG_IRQ_STATUS3 = 0xFA,
+    SPIRIT1_REG_IRQ_STATUS2 = 0xFB,
+    SPIRIT1_REG_IRQ_STATUS1 = 0xFC,
+    SPIRIT1_REG_IRQ_STATUS0 = 0xFD,
+
+    /** General information registers **/
+    SPIRIT1_REG_DEVICE_INFO1 = 0xF0,
+    SPIRIT1_REG_DEVICE_INFO0 = 0xF1
+} spirit1_reg_t;
+
+
+/**
+ * SPIRIT1 Header bits
+ */
+#define SPIRIT1_HEADER_COMMAND 0x80
+#define SPIRIT1_HEADER_REGISTER 0x00
+#define SPIRIT1_HEADER_READ 0x01
+#define SPIRIT1_HEADER_WRITE 0x00
+
+/**
+ * *************** BASIC INPUT/OUTPUT FUNCTIONS ***************
+ */
+
+
+/**
+ * Get current state of the radio
+ * @return current state
+ */
+spirit1_state_t spirit1_get_state();
+
+/**
+ * Send a command to the radio
+ * @param cmd, command to be sent
+ */
+void spirit1_send_command(spirit1_command_t cmd);
+
+/**
+ *
+ * @param addr
+ * @param data
+ */
+void spirit1_write_data(uint8_t addr, const uint8_t* data);
+
+/**
+ *
+ * @param addr
+ * @param data
+ */
+void spirit1_read_data(uint8_t addr, uint8_t* data);
+
+
+/**
+ *
+ */
+
+void spirit1_init();
+
+/**
+ *
+ */
+void spirit1_setup_radio();
+
+/**
+ *
+ */
+void spirit1_setup_packets();
+
+/**
+ *
+ */
+void spirit1_setup_cdma();
+
+
+#endif //PROJECT_SPIRIT1_H
