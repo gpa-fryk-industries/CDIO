@@ -6,58 +6,59 @@ use IEEE.numeric_std.all;
 entity r2_BFI is
 
 	generic (
-	
+		
 		N_bit : integer := 10;
+		Stage : integer := 0;
 		D     : integer := 2
 	
 	);
 
    port( 
 	
-		x_real : in signed(N_bit-1 downto 0);
-		x_imag : in signed(N_bit-1 downto 0);
+		x_real : in signed(Stage + N_bit-1 downto 0);
+		x_imag : in signed(Stage + N_bit-1 downto 0);
 		
-		y_real : out signed(N_bit-1 downto 0);
-		y_imag : out signed(N_bit-1 downto 0);
+		y_real : out signed(Stage + N_bit downto 0);
+		y_imag : out signed(Stage + N_bit downto 0);
 		
 		clock  : in std_logic;
 		reset  : in std_logic;
-		s    : in std_logic
+		s      : in std_logic
                   
 	);
 end r2_BFI;
 
 architecture arch_r2_BFI of r2_BFI is
 
-	signal x1_real : signed(N_bit-1 downto 0);
-	signal x1_imag : signed(N_bit-1 downto 0);
+	signal x1_real : signed(Stage + N_bit downto 0);
+	signal x1_imag : signed(Stage + N_bit downto 0);
  
-	signal x2_real : signed(N_bit-1 downto 0);
-	signal x2_imag : signed(N_bit-1 downto 0);
+	signal x2_real : signed(Stage + N_bit downto 0);
+	signal x2_imag : signed(Stage + N_bit downto 0);
 
-	signal y1_real : signed(N_bit-1 downto 0);
-	signal y1_imag : signed(N_bit-1 downto 0);
+	signal y1_real : signed(Stage + N_bit downto 0);
+	signal y1_imag : signed(Stage + N_bit downto 0);
 
-	signal y2_real : signed(N_bit-1 downto 0);
-	signal y2_imag : signed(N_bit-1 downto 0);
+	signal y2_real : signed(Stage + N_bit downto 0);
+	signal y2_imag : signed(Stage + N_bit downto 0);
 
-	signal z1_real : signed(N_bit-1 downto 0);
-	signal z1_imag : signed(N_bit-1 downto 0);
+	signal z1_real : signed(Stage + N_bit downto 0);
+	signal z1_imag : signed(Stage + N_bit downto 0);
 
-	signal z2_real : signed(N_bit-1 downto 0);
-	signal z2_imag : signed(N_bit-1 downto 0);
+	signal z2_real : signed(Stage + N_bit downto 0);
+	signal z2_imag : signed(Stage + N_bit downto 0);
 
 	--------------------------------------------------------------------
 	
-	type data_array is array (0 to D-1) of signed(N_bit-1 downto 0);
+	type data_array is array (0 to D-1) of signed(Stage + N_bit downto 0);
 	
 	signal data_real : data_array;
 	signal data_imag : data_array;
 
 begin
 
-	x2_real <= x_real;
-	x2_imag <= x_imag;
+	x2_real <= to_signed( to_integer(x_real), Stage + N_bit + 1 );
+	x2_imag <= to_signed( to_integer(x_imag), Stage + N_bit + 1 );
 
 	Butterfly: process(x1_real, x1_imag, x2_real, x2_imag)
 	begin
