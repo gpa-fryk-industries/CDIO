@@ -6,7 +6,7 @@ entity adpcm_inv_quantizer is
 
 	generic (
 	
-		N : integer := 2
+		N : integer := 3
 	
 	);
 	
@@ -30,8 +30,8 @@ architecture arch_adpcm_inv_quantizer of adpcm_inv_quantizer is
 	
 begin
 
-	diffq(0) <= Step_in / 8; -- Bitshift 3 times. 
-	step(0) <= Step_in /  (2**(3-N)); --Initalize step differently depending on N, i.e. bitshift Step_in differently. 
+	diffq(0) <= shift_right(Step_in, N); -- Bitshift 3 times. 
+	step(0) <= shift_right(Step_in, 3-N); --Initalize step differently depending on N, i.e. bitshift Step_in differently. 
 	
 	-- Bring it. 
 	INV_QUANTIZER: process(Code_in, Step_in) is 
@@ -49,7 +49,7 @@ begin
 			
 			end if;
 				
-			step(i+1) <= step(i) / 2; --Bit shift to the next stage.
+			step(i+1) <= shift_right(step(i),1); --Bit shift to the next stage.
 			
 		end loop;
 		

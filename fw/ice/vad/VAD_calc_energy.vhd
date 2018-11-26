@@ -27,7 +27,7 @@ end vad_energy;
 
 architecture arch_vad_energy of vad_energy is
 	
-	signal e_internal    : integer range 0 to 2**32 - 1 := 0;
+	signal e_internal    : integer range 0 to 2**31 - 1 := 0;
 	signal counter       : integer range 0 to 2**7 := 0;
 	
 begin
@@ -46,16 +46,16 @@ begin
 		-- 
 		elsif ( rising_edge(Clock) ) then
 		
-			if counter = N then
+			if counter >= N then
 				
 				E_out <= to_unsigned( ( e_internal / N ) , 16 );
 				
-				e_internal <= ( to_integer(Sample) ** 2 );
+				e_internal <= ( to_integer(Sample) * to_integer(Sample) );
 				counter <= 1;
 				
 				
 			else
-				e_internal <= e_internal + ( to_integer(Sample) ** 2 );
+				e_internal <= e_internal + ( to_integer(Sample) * to_integer(Sample) );
 				counter <= counter + 1;
 				
 			end if;

@@ -6,7 +6,7 @@ entity adpcm_quantizer is
 
 	generic (
 	
-		N : integer := 2
+		N : integer := 3
 	
 	);
 	
@@ -55,7 +55,7 @@ begin
 			
 			end if;
 			
-			step(i+1) <= step(i) / 2; --Bit shift step for next stage.
+			step(i+1) <= shift_right(step(i) , 1); --Bit shift step for next stage.
 			
 		end loop;
 		
