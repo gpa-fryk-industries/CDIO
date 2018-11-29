@@ -6,7 +6,7 @@ entity adpcm_quantizer is
 
 	generic (
 	
-		N : integer := 3
+		N : integer := 2
 	
 	);
 	
@@ -14,7 +14,7 @@ entity adpcm_quantizer is
 
 		Diff_in   : in signed(15 downto 0);	-- Difference between Sample and predicted sample.
 		Step_in   : in signed(15 downto 0);	-- Step from LUT StepSizeTable. See adpcm_adapt.vhd.
-		Code_out	 : out  unsigned(N downto 0) -- Encoded output.		 	
+		Code_out	 : out  unsigned(3 downto 0) -- Encoded output.		 	
                   
 	);
 end adpcm_quantizer;
@@ -27,7 +27,7 @@ architecture arch_adpcm_quantizer of adpcm_quantizer is
 	
 	signal diff : diff_array; -- internal diff signal.
 	signal step : step_array; -- internal step signal.
-	signal code : unsigned(N downto 0) := (others => '0'); -- internal code signal.
+	signal code : unsigned(3 downto 0) := (others => '0'); -- internal code signal.
 	
 begin
 
@@ -55,15 +55,13 @@ begin
 			
 			end if;
 			
-			step(i+1) <= shift_right(step(i) , 1); --Bit shift step for next stage.
+			step(i+1) <= shift_right(step(i),1); --Bit shift step for next stage.
 			
 		end loop;
 		
 	end process;
+	
 		
-	Code_out <= code; --All bits of code should be set. This is the encoded output also, worth noting. 
+	Code_out <= to_unsigned(to_integer(code),4); --All bits of code should be set. This is the encoded output also, worth noting. 
 
 end arch_adpcm_quantizer;
-
-
-

@@ -6,13 +6,13 @@ entity adpcm_inv_quantizer is
 
 	generic (
 	
-		N : integer := 3
+		N : integer := 2
 	
 	);
 	
    port( 
 		
-		Code_in   : in unsigned(N downto 0); -- Encoded signal 
+		Code_in   : in unsigned(3 downto 0); -- Encoded signal 
 		Step_in   : in signed(15 downto 0);	-- Step signal from LUT StepSizeTable. See adpcm_adapt.vhd...
 		Diffq_out : out signed(15 downto 0) -- Diffq output to adapt stage.
                   
@@ -30,8 +30,8 @@ architecture arch_adpcm_inv_quantizer of adpcm_inv_quantizer is
 	
 begin
 
-	diffq(0) <= shift_right(Step_in, N); -- Bitshift 3 times. 
-	step(0) <= shift_right(Step_in, 3-N); --Initalize step differently depending on N, i.e. bitshift Step_in differently. 
+	diffq(0) <= shift_right(Step_in,3); -- Bitshift 3 times. 
+	step(0) <= shift_right(Step_in,(2**(3-N))-1) ; --Initalize step differently depending on N, i.e. bitshift Step_in differently. 
 	
 	-- Bring it. 
 	INV_QUANTIZER: process(Code_in, Step_in) is 
@@ -58,6 +58,3 @@ begin
 	Diffq_out <= diffq(N); -- Set Diffq output to the Nth value in diffq array.
 
 end arch_adpcm_inv_quantizer;
-
-
-

@@ -26,14 +26,13 @@ entity adpcm_adapt is
 	
    port( 
 	
-		Code_in     : in unsigned(N downto 0); -- Encoded signal. 
+		Code_in     : in unsigned(3 downto 0); -- Encoded signal. 
 		Diffq_in    : in signed(15 downto 0); -- Diffq signal from inverted quantizer.
 		Sample_in   : in  signed(7 downto 0); -- New sample from microphone / sound source. 
 	
 		Clock       : in std_logic; -- Clock signal. 8 KHz in the moment of writing this.
 		Reset       : in std_logic; -- Reset signal. Reset module on '1'. 
 		
-		--y_code      : out unsigned(4 downto 0); -- Encoded output signal, might drop this later on.
 		y_signal	: out signed(7 downto 0); -- Decoded output signal in decoder mode.
 		
 		Diff_out    : out signed(15 downto 0); -- Difference between sample and predicted sample. Send to Quantizer.
@@ -85,9 +84,9 @@ begin
 			
 			-- Is the sign of Code_in negative / is MSB '1'?
 			if(Code_in(N) = '1') then		
-				pred_sample <=  ("0" & pred_sample_out) - ("0" & Diffq_in);	
+				pred_sample <=   to_signed( to_integer( (pred_sample_out) - ( Diffq_in) ), 17);	
 			else
-				pred_sample <= ("0" & pred_sample_out) +  ("0" & Diffq_in);
+				pred_sample <=   to_signed( to_integer( (pred_sample_out) + ( Diffq_in) ), 17);	
 			end if;
 			
 			
@@ -122,7 +121,7 @@ begin
 			pred_sample_out <= to_signed( to_integer( pred_sample ), 16 );
 	
 		end if;
-		
+--		
 	end process;
 	
 	
