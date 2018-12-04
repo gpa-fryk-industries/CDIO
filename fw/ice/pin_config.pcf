@@ -1,5 +1,26 @@
 ###IOSet List 9
+
+# Control
 set_io CLK_MCO 20
 set_io ATT 18
 set_io RST 44
+set_io MINH 20
 
+# Microphone
+set_io MIC_DAT 47
+set_io MIC_CLK 48
+
+# Speakers
+set_io SPK_R 43
+set_io SPK_L 42
+set_io SPK_A 23
+
+# Radio
+set_io RAD_TXR 35
+set_io RAD_RXC 37
+
+# SPI 
+set_io SPI_SO 14
+set_io SPI_SCK 15
+set_io SPI_SS 16
+set_io SPI_SI 17
