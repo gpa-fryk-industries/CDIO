@@ -10,11 +10,14 @@
 #
 # Clocks
 #
-define_clock   {CLK_32KHz} -name {CLK_32KHz}  -freq 0.032 -clockgroup default_clkgroup_0
-define_clock -disable   {n:Divider_to_1Hz.COUNTER[9]} -name {n:Divider_to_1Hz.COUNTER[9]}  -clockgroup default_clkgroup_1
-define_clock -disable   {n:DIVIDE_32MHz.COUNTER[20]} -name {n:DIVIDE_32MHz.COUNTER[20]}  -clockgroup default_clkgroup_2
-define_clock -disable   {n:DIVIDE_32MHz.COUNTER[27]} -name {n:DIVIDE_32MHz.COUNTER[27]}  -clockgroup default_clkgroup_3
-define_clock   {CLK_32MHZ} -name {CLK_32MHZ}  -freq 32 -clockgroup default_clkgroup_4
+
+#define_clock   {CLK_32KHz} -name {CLK_32KHz}  -freq 0.032 -clockgroup default_clkgroup_0
+#define_clock -disable   {n:Divider_to_1Hz.COUNTER[9]} -name {n:Divider_to_1Hz.COUNTER[9]}  -clockgroup default_clkgroup_1
+#define_clock -disable   {n:DIVIDE_32MHz.COUNTER[20]} -name {n:DIVIDE_32MHz.COUNTER[20]}  -clockgroup default_clkgroup_2
+#define_clock -disable   {n:DIVIDE_32MHz.COUNTER[27]} -name {n:DIVIDE_32MHz.COUNTER[27]}  -clockgroup default_clkgroup_3
+#define_clock   {CLK_32MHZ} -name {CLK_32MHZ}  -freq 32 -clockgroup default_clkgroup_4
+
+define_clock   {CLK_MCO} -name {CLK_MCO}  -freq 2 -clockgroup default_clkgroup_0
 
 #
 # Clock to Clock

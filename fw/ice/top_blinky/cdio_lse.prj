@@ -1,5 +1,5 @@
 #-- Lattice, Inc.
-#-- Project file /home/atmelfan/projects/CDIO/fw/ice/cdio/cdio_lse.prj
+#-- Project file /home/atmelfan/projects/CDIO/fw/ice/top_blinky/cdio_lse.prj
 
 #device
 -a SBTiCE40UP
@@ -29,7 +29,7 @@
 -loop_limit 1950
 
 -lib work -vhd "../top.vhd" 
--p "/home/atmelfan/projects/CDIO/fw/ice/cdio"
+-p "/home/atmelfan/projects/CDIO/fw/ice/top_blinky"
 
 #set result format/file last
 -output_edif cdio_Implmnt/cdio.edf
