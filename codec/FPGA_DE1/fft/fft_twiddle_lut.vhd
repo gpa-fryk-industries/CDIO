@@ -21,66 +21,48 @@ entity fft_twiddle_lut is
 	
 	generic (
 	
-		N_bit : integer := 10
-		
+		N_bit : integer := 8;
+		L     : integer := 4
 	);
 	
 	port( 
 	
-		clock : in std_logic;
-		reset : in std_logic;
 		
-		twiddle_real : out signed(N_bit downto 0);
-		twiddle_imag : out signed(N_bit downto 0);
+		tw_index_0 : in unsigned(L-1 downto 0);
+		tw_index_1 : in unsigned(L-1 downto 0);
 		
-		index_debug : out unsigned(3 downto 0) 
+		twiddle_real_0 : out signed(N_bit downto 0);
+		twiddle_imag_0 : out signed(N_bit downto 0);
+		
+		twiddle_real_1 : out signed(N_bit downto 0);
+		twiddle_imag_1 : out signed(N_bit downto 0)
+		
 	);
 
 end fft_twiddle_lut;
 
 architecture arch_fft_twiddle_lut of fft_twiddle_lut is
 
-	signal	TwiddleTableReal : my_array_t1(integer range 0 to 15) := (512, 473, 362, 195, 0, -196, -363, -474, -512, -474, -363, -196, -1, 195, 362, 473);
-												
-	signal	TwiddleTableImag : my_array_t1(integer range 0 to 15) := (0, -196, -363, -474, -512, -474, -363, -196, -1, 195, 362, 473, 512, 473, 362, 195);
+	signal	TwiddleTableReal : my_array_t1(integer range 0 to 63) := (128,	127,	125,	122,	118,	112,	106,	98,	90,	81,	71,	60,	48,	37,	24,
+																							12,	0,	-13,	-25,	-38,	-49,	-61,	-72,	-82,	-91,	-99,	-107,	-113,	-119,	-123,
+																							-126,	-128,	-128,	-128,	-126,	-123,	-119,	-113,	-107,	-99,	-91,	-82,	-72,	-61,	-49,
+																							-38,	-25,	-13,	-1,	12,	24,	37,	48,	60,	71,	81,	90,	98,	106,	112,	
+																							118,	122,	125,	127);		
+																							
+	signal	TwiddleTableImag : my_array_t1(integer range 0 to 63) := (0, -13, -25, -38, -49, -61, -72, -82, -91, -99, -107, -113, -119, -123, -126, -128, -128, 
+																							-128, -126, -123, -119, -113, -107, -99, -91, -82, -72, -61, -49, -38, -25, -13, -1, 12,
+																							24, 37, 48, 60, 71, 81, 90, 98, 106, 112, 118, 122, 125, 127, 128, 127, 125, 122, 118, 
+																							112, 106, 98,90, 81, 71, 60,48, 37, 24, 12);
 	
-	signal count : unsigned(4 downto 0) := (others => '0');	
-	
-	signal index : integer := 0;
 																							 
 begin
 
-	process(clock,reset) is
-	begin
-		
-		if reset = '1' then
-		
-			count <= (others => '0');
-		
-		elsif rising_edge(clock) then
-		
-			if ( count >= to_unsigned(15, 4) ) then
-			
-				count <= (others => '0');
-			
-			else
-			
-				count <= count + 1;
-		
-			end if;
-			
-		
-		end if;
 	
+	twiddle_real_0 <= to_signed( TwiddleTableReal( to_integer( tw_index_0) ) , N_bit+1);
+	twiddle_imag_0 <= to_signed( TwiddleTableImag( to_integer( tw_index_0) ) , N_bit+1);
 	
-	end process;
-	
-	index <= to_integer( not(count(2)) & ( count(3) xor count(2) ) ) * to_integer( count(1 downto 0) ) ;
-	
-	twiddle_real <= to_signed( TwiddleTableReal(index) , N_bit+1);
-	twiddle_imag <= to_signed( TwiddleTableImag(index) , N_bit+1);
-	
-	index_debug <= to_unsigned(index, 4);
+	twiddle_real_1 <= to_signed( TwiddleTableReal( to_integer( tw_index_1) ) , N_bit+1);
+	twiddle_imag_1 <= to_signed( TwiddleTableImag( to_integer( tw_index_1) ) , N_bit+1); 
 	
 end arch_fft_twiddle_lut;
 	
