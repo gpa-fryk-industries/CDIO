@@ -7,6 +7,12 @@
     /* Enable FPGA power and configuration */
     enable-fpga;
 
+    /* Enable MCO clock output  */
+    enable-mco;
+
+    /* Load configuration data into FPGA */
+    config-fpga;
+
     fpga {
         /*TODO: Add fpga config options?*/
     };

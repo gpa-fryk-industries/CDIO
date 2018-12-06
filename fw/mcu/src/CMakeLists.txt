@@ -41,9 +41,11 @@ add_fdt_target(config config.dts)
 # FPGA
 add_subdirectory(fpga)
 
+add_definitions(-DF_CPU=16000000UL)
+
 ### Project ###
-set(SOURCE_FILES main.c pins.h radio/spirit1.c radio/spirit1.h)
-add_executable(src ${SOURCE_FILES})
+set(SOURCE_FILES main.c pins.h radio/spirit1.c radio/spirit1.h dumb_delay.h)
+add_executable(src ${SOURCE_FILES} ${FPGA_SOURCE})
 add_dependencies(src libopencm3)
 target_link_libraries(src ${OCM3_LIBS})
 target_link_libraries(src fdt config)
