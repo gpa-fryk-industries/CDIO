@@ -26,9 +26,12 @@
 -resolve_mixed_drivers 0
 -RWCheckOnRam 0
 -fix_gated_clocks 1
+-top top
 -loop_limit 1950
 
--lib work -vhd "../top.vhd" 
+-lib work -vhd "../ram/fifo_generic.vhd" 
+-lib work -vhd "../ram/ram_generic.vhd" 
+-lib work -vhd "top.vhd" 
 -p "/home/atmelfan/projects/CDIO/fw/ice/top_blinky"
 
 #set result format/file last

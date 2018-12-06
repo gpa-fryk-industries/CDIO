@@ -2,7 +2,9 @@
 #-- Project file /home/atmelfan/documents/CDIO/fw/ice/cdio/cdio_syn.prj
 #project files
 
-add_file -vhdl -lib work "../top.vhd" 
+add_file -vhdl -lib work "../ram/fifo_generic.vhd" 
+add_file -vhdl -lib work "../ram/ram_generic.vhd" 
+add_file -vhdl -lib work "top.vhd" 
 add_file -constraint -lib work "../timing_constraints.sdc"
 #implementation: "cdio_Implmnt"
 impl -add cdio_Implmnt -type fpga
