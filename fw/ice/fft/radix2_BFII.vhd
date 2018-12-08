@@ -23,8 +23,8 @@ entity r2_BFII is
 		
 		clock  : in std_logic;
 		reset  : in std_logic;
-		s    : in std_logic;
-		t    : in std_logic
+		s      : in std_logic;
+		t      : in std_logic
                   
 	);
 end r2_BFII;

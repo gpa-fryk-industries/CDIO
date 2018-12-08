@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity test_counter is
+entity fft_control_counter is
 	
 	generic (
 	
@@ -15,20 +15,14 @@ entity test_counter is
 		clock : in std_logic;
 		reset : in std_logic;
 		
-		sel0  : out std_logic;
-		sel1  : out std_logic;
-		sel2  : out std_logic;
-		sel3  : out std_logic;
-		sel4  : out std_logic;
-		sel5  : out std_logic;
-		
-		count_debug : out unsigned(L-1 downto 0)
+		sel  : out unsigned(L-1 downto 0)
+
 
 	);
 
-end test_counter;
+end fft_control_counter;
 
-architecture arch_test_counter of test_counter is
+architecture arch_fft_control_counter of fft_control_counter is
 
 	signal count : unsigned(L-1 downto 0) := (others => '0');	
 																							 
@@ -56,15 +50,8 @@ begin
 	
 	end process;
 	
-	sel0 <= count(0);
-	sel1 <= count(1);
-	sel2 <= count(2);
-	sel3 <= count(3);
-	sel4 <= count(4);
-	sel5 <= count(5);
-	
-	count_debug <= count;
+	sel <= count;
 
-end arch_test_counter;
+end arch_fft_control_counter;
 	
 	

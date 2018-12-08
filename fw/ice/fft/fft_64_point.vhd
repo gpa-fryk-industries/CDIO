@@ -20,6 +20,7 @@ entity fft_64_point is
 		y_imag : out signed(M_bit+5 downto 0);
 
 		clock   : in std_logic;
+		master_clock : in std_logic;
 		reset   : in std_logic
 
 	);
@@ -84,7 +85,7 @@ end component;
 
 
 --Multiplier
-component fft_twiddle_multiplier
+component twiddle_multiplier_single
 	
 	generic (
 	
@@ -99,6 +100,9 @@ component fft_twiddle_multiplier
 		
 		y_real : out signed(Stage + N_bit-1 downto 0);
 		y_imag : out signed(Stage + N_bit-1 downto 0);
+		
+		clock  : in std_logic;
+		reset : in std_logic;
 		
 		twiddle_real : in signed(N_bit downto 0);
 		twiddle_imag : in signed(N_bit downto 0)
@@ -203,12 +207,11 @@ begin
 	C0 : fft_control_counter 
 		generic map(6)
 		port map(clock, reset, counter);	
-
-	TW0: twiddle_controller
-		generic map(6, 2)
+	TW0: twiddle_controller_W0
+		generic map(6)
 		port map(clock, reset, TW0_index);	
-	TW1: twiddle_controller
-		generic map(6, 4)
+	TW1: twiddle_controller_W1
+		generic map(6)
 		port map(clock, reset, TW1_index);	
 	LUT: fft_twiddle_lut
 		generic map(M_bit, 6)
@@ -219,21 +222,30 @@ begin
 	S1: r2_BFII
 		generic map(M_bit, 1, 16)
 		port map(Z1_real , Z1_imag, Z2_real , Z2_imag, clock, reset, counter(4),counter(5) );
-	W0: fft_twiddle_multiplier
+	W0: twiddle_multiplier_single
 		generic map(M_bit, 2)
-		port map(Z2_real, Z2_imag, Z3_real, Z3_imag, TW0_real, TW0_imag);
+		port map(Z2_real, Z2_imag, Z3_real, Z3_imag, master_clock, reset, TW0_real, TW0_imag);
 	S2: r2_BFI 
 		generic map(M_bit, 2, 8)
 		port map(Z3_real , Z3_imag, Z4_real , Z4_imag, clock, reset, counter(3) );
+--	S2: r2_BFI
+--		generic map(M_bit, 2, 8)
+--		port map(Z2_real , Z2_imag, Z4_real , Z4_imag, clock, reset ,counter(3) );
+
 	S3: r2_BFII
 		generic map(M_bit, 3, 4)
 		port map(Z4_real , Z4_imag, Z5_real , Z5_imag, clock, reset, counter(2),counter(3) );
-	W1: fft_twiddle_multiplier
+	W1: twiddle_multiplier_single
 		generic map(M_bit, 4)
-		port map(Z5_real , Z5_imag, Z6_real , Z6_imag, TW1_real, TW1_imag);
+		port map(Z5_real , Z5_imag, Z6_real , Z6_imag,master_clock, reset, TW1_real, TW1_imag);
 	S4: r2_BFI 
 		generic map(M_bit, 4, 2)
 		port map(Z6_real , Z6_imag, Z7_real , Z7_imag, clock, reset, counter(1) );
+	
+--	S4: r2_BFI
+--		generic map(M_bit, 4, 2)
+--		port map(Z5_real , Z5_imag, Z7_real , Z7_imag, clock, reset, counter(1) );
+	
 	S5: r2_BFII 
 		generic map(M_bit, 5, 1)
 		port map(Z7_real , Z7_imag, y_real , y_imag, clock, reset, counter(0),counter(1) );
