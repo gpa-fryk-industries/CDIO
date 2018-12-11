@@ -34,7 +34,7 @@ begin
 	step(0) <= shift_right(Step_in,(2**(3-N))-1) ; --Initalize step differently depending on N, i.e. bitshift Step_in differently. 
 	
 	-- Bring it. 
-	INV_QUANTIZER: process(Code_in, Step_in) is 
+	INV_QUANTIZER: process(Code_in, Step_in, diffq, step) is 
 	begin
 	
 		ADPCM_INV_QUANTIZER_GEN: for i in 0 to N-1 loop 

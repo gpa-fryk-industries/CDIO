@@ -38,7 +38,7 @@ begin
 	
 	
 	-- HERE WE GO. GENERIC QUANTIZER. Repeat net depending on N. 
-	QUANTIZER: process(Diff_in, Step_in) is 
+	QUANTIZER: process(Diff_in, Step_in,diff,step) is 
 	begin
 	
 		ADPCM_QUANTIZER_GEN: for i in 0 to N-1 loop 
