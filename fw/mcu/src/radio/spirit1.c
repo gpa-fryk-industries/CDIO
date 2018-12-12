@@ -11,6 +11,9 @@
 #include "spirit1.h"
 #include "SPIRIT1_Library/Inc/SPIRIT_Radio.h"
 #include "SPIRIT1_Library/Inc/SPIRIT_Config.h"
+#include "../pins.h"
+#include <libopencm3/stm32/spi.h>
+#include <libopencm3/stm32/gpio.h>
 
 
 /* list of the command codes of SPIRIT1 */
@@ -38,69 +41,118 @@
 #define READ_HEADER     BUILT_HEADER(HEADER_ADDRESS_MASK, HEADER_READ_MASK)  /*!< macro to build the read header byte*/
 #define COMMAND_HEADER BUILT_HEADER(HEADER_COMMAND_MASK, HEADER_WRITE_MASK) /*!< macro to build the command header byte*/
 
+/**
+ * Write registers in Radio
+ * @param address Address to write to.
+ * @param n_regs Number of registers to write
+ * @param buffer Register contents
+ * @return Current radio status
+ */
 StatusBytes RadioSpiWriteRegisters(uint8_t address, uint8_t n_regs, uint8_t *buffer) {
     static uint16_t tmpstatus;
 
     StatusBytes *status = (StatusBytes *) &tmpstatus;
 
+    /* Set CS LOW */
+    gpio_clear(GPIOA, PA_RADIO_CS);
 
-    tmpstatus = (uint16_t) (spirit1.write(WRITE_HEADER) << 8 | spirit1.write(address));
+    /* Send write header and address
+     * Meanwhile spirit1 returns its status as two bytes
+     */
+    uint8_t stath = (uint8_t) spi_xfer(SPI1, WRITE_HEADER);
+    uint8_t statl = (uint8_t) spi_xfer(SPI1, address);
 
-    uint8_t response[n_regs];
-    for (int i = 0; i < n_regs; i++) response[i] = (uint8_t) spirit1.write(buffer[i]);
+    tmpstatus = (uint16_t) (stath | statl);
 
+    /* Write n bytes */
+    for (int i = 0; i < n_regs; i++)
+        spi_send(SPI1, buffer[i]);
+
+    /* Set CS HIGH */
+    gpio_set(GPIOA, PA_RADIO_CS);
 
 
     return *status;
 }
 
+/**
+ * Read registers in Radio
+ * @param address Address to read from.
+ * @param n_regs Number of registers to read.
+ * @param buffer Register contents
+ * @return Current radio status
+ */
 StatusBytes RadioSpiReadRegisters(uint8_t address, uint8_t n_regs, uint8_t *buffer) {
     static uint16_t tmpstatus;
 
     StatusBytes *status = (StatusBytes *) &tmpstatus;
 
-    tmpstatus = (uint16_t) (spirit1.write(READ_HEADER) << 8 | spirit1.write(address));
+    /* Set CS LOW */
+    gpio_clear(GPIOA, PA_RADIO_CS);
 
-    for (int i = 0; i < n_regs; i++) buffer[i] = (uint8_t) spirit1.write(0);
+    /* Send write header and address
+     * Meanwhile spirit1 returns its status as two bytes
+     */
+    uint8_t stath = (uint8_t) spi_xfer(SPI1, READ_HEADER);
+    uint8_t statl = (uint8_t) spi_xfer(SPI1, address);
 
+    tmpstatus = (uint16_t) (stath | statl);
+
+    /* Read n bytes*/
+    for (int i = 0; i < n_regs; i++)
+        buffer[i] = (uint8_t) spi_read(SPI1);
+
+    /* Set CS HIGH */
+    gpio_set(GPIOA, PA_RADIO_CS);
 
     return *status;
 
 }
 
+/**
+ * Send command to radio
+ * @param cmd_code Command to execute
+ * @return Current radio status
+ */
 StatusBytes RadioSpiCommandStrobes(uint8_t cmd_code) {
     static uint16_t tmpstatus;
 
     StatusBytes *status = (StatusBytes *) &tmpstatus;
 
-    tmpstatus = (uint16_t) (spirit1.write(COMMAND_HEADER) << 8 | spirit1.write(cmd_code));
+
+    /* Set CS LOW */
+    gpio_clear(GPIOA, PA_RADIO_CS);
+
+    /* Send write header and address
+     * Meanwhile spirit1 returns its status as two bytes
+     */
+    uint8_t stath = (uint8_t) spi_xfer(SPI1, COMMAND_HEADER);
+    uint8_t statl = (uint8_t) spi_xfer(SPI1, cmd_code);
+
+    tmpstatus = (uint16_t) (stath | statl);
+
+    /* Set CS HIGH */
+    gpio_set(GPIOA, PA_RADIO_CS);
 
     return *status;
 }
 
+/**
+ * Write to radio FIFO
+ * @param n_regs Number of registers to read.
+ * @param buffer Register contents
+ * @return Current radio status
+ */
 StatusBytes RadioSpiWriteFifo(uint8_t n_regs, uint8_t *buffer) {
-
-    static uint16_t tmpstatus;
-
-    StatusBytes *status = (StatusBytes *) &tmpstatus;
-
-    tmpstatus = (uint16_t) (spirit1.write(WRITE_HEADER) << 8 | spirit1.write(LINEAR_FIFO_ADDRESS));
-
-    uint8_t response[n_regs];
-    for (int i = 0; i < n_regs; i++) response[i] = (uint8_t) spirit1.write(buffer[i]);
-
-    return *status;
+    return RadioSpiWriteRegisters(LINEAR_FIFO_ADDRESS, n_regs, buffer);
 }
 
+/**
+ * Read from radio FIFO
+ * @param n_regs Number of registers to read.
+ * @param buffer Register contents
+ * @return Current radio status
+ */
 StatusBytes RadioSpiReadFifo(uint8_t n_regs, uint8_t *buffer) {
-    static uint16_t tmpstatus;
-
-    StatusBytes *status = (StatusBytes *) &tmpstatus;
-    tmpstatus = (uint16_t) (spirit1.write(READ_HEADER) << 8 | spirit1.write(LINEAR_FIFO_ADDRESS));
-
-    //printf("READ %04x=%x (%d)\r\n", LINEAR_FIFO_ADDRESS, status, n_regs);
-    for (int i = 0; i < n_regs; i++) buffer[i] = (uint8_t) spirit1.write(0);
-    //dbg_dump("READ", buffer, n_regs);
-
-    return *status;
+    return RadioSpiReadRegisters(LINEAR_FIFO_ADDRESS, n_regs, buffer);
 }

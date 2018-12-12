@@ -282,10 +282,13 @@ int main(){
         init_fpga(false);
     }
 
+    /* Deselect FPGA and Radio */
+    gpio_set(GPIOA, PA_FPGA_CSS);
+    gpio_set(GPIOA, PA_RADIO_CS);
+
     /* Init hw SPI (note: reinitializes some SPI pins, cannot be called before config_fpga()) */
     init_spi();
 
-    gpio_clear(GPIOA, PA_FPGA_CSS);
     while(true){
         _dumb_delay_us(100);
         fpga_shift8(0xAF);
