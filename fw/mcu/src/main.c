@@ -10,6 +10,7 @@
 #include "fpga/fpga_config.h"
 #include "pins.h"
 #include "dumb_delay.h"
+#include "radio/SPIRIT1_Library/Inc/SPIRIT_Config.h"
 
 FDT_FILE(config);
 
@@ -291,9 +292,9 @@ int main(){
 
     while(true){
         _dumb_delay_us(100);
-        fpga_shift8(0xAF);
+        SpiritSpiCommandStrobes(COMMAND_SRES);
         _dumb_delay_us(100);
-        fpga_shift8(0x00);
+        SpiritSpiCommandStrobes(COMMAND_SRES);
     }
 
     return 0;
