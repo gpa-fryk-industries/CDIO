@@ -3,6 +3,7 @@
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/stm32/i2c.h>
+#include <libopencm3/stm32/spi.h>
 
 #include "fdt/fdt_utils.h"
 #include "fdt/dtb_parser.h"
@@ -187,6 +188,48 @@ bool init_fpga(bool enable){
     return true;
 }
 
+/**
+ * Initialize hardware SPI for use with FPGA and the Radio.
+ * NOTE! Must be done AFTER FPGA initialization due to some weird spi things
+ * required by said initialization which is bitbanged.
+ */
+static void init_spi(){
+
+    /* Reinitialize SPI pins to AF mode */
+    /* PA_SPI_SCK pin */
+    gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, PA_SPI_SCK);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_SPI_SCK);
+    gpio_clear(GPIOA, PA_SPI_SCK);
+    gpio_set_af(GPIOA, GPIO_AF0, PA_SPI_SCK);
+
+    /* PA_SPI_MOSI pin */
+    gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, PA_SPI_MOSI);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_SPI_MISO);
+    gpio_clear(GPIOA, PA_SPI_MOSI);
+    gpio_set_af(GPIOA, GPIO_AF0, PA_SPI_MOSI);
+
+    /* PA_SPI_MISO pin */
+    gpio_mode_setup(GPIOA, GPIO_MODE_INPUT, GPIO_PUPD_PULLDOWN, PA_SPI_MISO);
+    gpio_set_af(GPIOA, GPIO_AF0, PA_SPI_MISO);
+
+    /* Enable clock */
+    rcc_periph_clock_enable(RCC_SPI1);
+
+    /* Reset SPI, defaults to disabled */
+    spi_reset(SPI1);
+
+    /* Init SPI to  */
+    spi_init_master(SPI1, SPI_CR1_BAUDRATE_FPCLK_DIV_64, SPI_CR1_CPOL_CLK_TO_1_WHEN_IDLE,
+                    SPI_CR1_CPHA_CLK_TRANSITION_2, SPI_CR1_DFF_8BIT, SPI_CR1_MSBFIRST);
+
+    /* We'll control chip select. NSS(internal) needs to be set high because it's to retarded to do it itself */
+    spi_enable_software_slave_management(SPI1);
+    spi_set_nss_high(SPI1);
+
+    /* Enable SPI */
+    spi_enable(SPI1);
+}
+
 static void init_serial(void)
 {
     /* Configure serial data pins*/
@@ -226,6 +269,7 @@ int main(){
         init_serial();
     }
 
+    /* Init SPI pins for FPGA configuration */
     init_spi_pins();
 
     /* Check the 'enable-fpga' tag and power-up/configure if found */
@@ -237,6 +281,9 @@ int main(){
     }else{
         init_fpga(false);
     }
+
+    /* Init hw SPI (note: reinitializes some SPI pins, cannot be called before config_fpga()) */
+    init_spi();
 
     gpio_clear(GPIOA, PA_FPGA_CSS);
     while(true){
