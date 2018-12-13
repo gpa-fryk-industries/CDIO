@@ -44,6 +44,8 @@ add_subdirectory(fpga)
 # Radio
 add_subdirectory(radio)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/radio/SPIRIT1_Library/Inc/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/radio/SPIRIT1_Util/Inc/)
+
 
 add_definitions(-DF_CPU=16000000UL)
 

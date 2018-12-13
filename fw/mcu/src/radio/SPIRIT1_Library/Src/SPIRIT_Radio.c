@@ -957,7 +957,7 @@ uint32_t SpiritRadioGetFrequencyBase(void)
   uint8_t cRefDiv = (uint8_t)SpiritRadioGetRefDiv() + 1;
   
   /* Calculates the frequency base and return it */
-  return (uint32_t)round(synthWord*(((double)s_lXtalFrequency)/(FBASE_DIVIDER*cRefDiv*s_vectcBHalfFactor[band])));
+  return (uint32_t)(synthWord*(((double)s_lXtalFrequency)/(FBASE_DIVIDER*cRefDiv*s_vectcBHalfFactor[band])));
 }
 
 

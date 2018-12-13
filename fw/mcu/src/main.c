@@ -4,6 +4,12 @@
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/stm32/i2c.h>
 #include <libopencm3/stm32/spi.h>
+#include <libopencm3/stm32/exti.h>
+#include <libopencm3/stm32/l0/nvic.h>
+#include <libopencm3/cm3/nvic.h>
+
+
+
 
 #include "fdt/fdt_utils.h"
 #include "fdt/dtb_parser.h"
@@ -11,6 +17,7 @@
 #include "pins.h"
 #include "dumb_delay.h"
 #include "radio/SPIRIT1_Library/Inc/SPIRIT_Config.h"
+#include "radio/spirit1.h"
 
 FDT_FILE(config);
 
@@ -59,13 +66,13 @@ void init_spi_pins(){
 
     /* PA_SPI_SCK pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, PA_SPI_SCK);
-    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_SPI_SCK);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_SPI_SCK);
     gpio_clear(GPIOA, PA_SPI_SCK);
     //gpio_set_af(GPIOA, 0, PA_SPI_SCK);
 
     /* PA_SPI_MOSI pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, PA_SPI_MOSI);
-    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_SPI_MISO);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_SPI_MISO);
     gpio_clear(GPIOA, PA_SPI_MOSI);
     //gpio_set_af(GPIOA, 0, PA_SPI_MOSI);
 
@@ -77,14 +84,19 @@ void init_spi_pins(){
     /** FPGA **/
     /* PA_FPGA_CSS pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, PA_FPGA_CSS);
-    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_FPGA_CSS);
-    gpio_clear(GPIOA, PA_FPGA_CSS); /* Deselect fpga */
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_FPGA_CSS);
+    gpio_clear(GPIOA, PA_FPGA_CSS); /* Select fpga */
 
     /** RADIO **/
     /* PA_RADIO_CS pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLDOWN, PA_RADIO_CS);
-    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_RADIO_CS);
-    gpio_set(GPIOA, PA_RADIO_CS); /* Deselect fpga */
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_RADIO_CS);
+    gpio_set(GPIOA, PA_RADIO_CS); /* Deselect radio */
+
+    /* PA_RADIO_SHD pin */
+    gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PA_RADIO_SHD);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_RADIO_SHD);
+    gpio_clear(GPIOA, PA_RADIO_SHD); /* Enable radio */
 
 
 }
@@ -199,12 +211,12 @@ static void init_spi(){
     /* Reinitialize SPI pins to AF mode */
     /* PA_SPI_SCK pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_PULLDOWN, PA_SPI_SCK);
-    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_SPI_SCK);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_SPI_SCK);
     gpio_set_af(GPIOA, GPIO_AF0, PA_SPI_SCK);
 
     /* PA_SPI_MOSI pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_PULLDOWN, PA_SPI_MOSI);
-    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_SPI_MISO);
+    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_SPI_MISO);
     gpio_set_af(GPIOA, GPIO_AF0, PA_SPI_MOSI);
 
     /* PA_SPI_MISO pin */
@@ -252,6 +264,30 @@ static void init_serial(void)
     serial_enabled = true;
 }
 
+void init_radio(){
+    /* PB_RADIO_TXR pin */
+    gpio_mode_setup(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, PB_RADIO_TXR);
+
+    /* Configure EXTI7 source. */
+    nvic_enable_irq(NVIC_EXTI4_15_IRQ);
+    exti_select_source(EXTI7, GPIOB);
+
+    /* Interrupt on falling edge */
+    exti_set_trigger(EXTI7, EXTI_TRIGGER_FALLING);
+
+    /* Enable interrupt */
+    exti_enable_request(EXTI7);
+}
+
+void exti4_15_isr(void)
+{
+    if(exti_get_flag_status(EXTI7)){
+        exti_reset_request(EXTI7);
+
+        radio_interrupt();
+    }
+}
+
 int main(){
 
     init_clocks();
@@ -287,24 +323,27 @@ int main(){
 
     /* Init hw SPI (note: reinitializes some SPI pins, cannot be called before config_fpga()) */
     init_spi();
+    spi_set_nss_high(SPI1);
 
-    RadioSpiCommandStrobes(COMMAND_SRES);
+    /* Init Radio */
+    radio_init();
 
-    /* Demand MOAR POWAH! */
-    SpiritManagementWaExtraCurrent();
+    char test[] = "Hello world";
 
-    /* Set xtal to 52 MHz */
-    SpiritRadioSetXtalFrequency(52000000);
+    char rxbuffer[256];
 
-    /*  */
+    radio_send((uint8_t *) test, 12);
 
-
-    volatile StatusBytes stat;
+    /* Loop */
     while(true){
-        _dumb_delay_us(100);
-        stat = RadioSpiCommandStrobes(COMMAND_SRES);
-        _dumb_delay_us(100);
-        stat = RadioSpiCommandStrobes(COMMAND_SRES);
+        switch(radio_current_state()){
+            case RADIO_READY:
+                radio_receive(&rxbuffer, 256);
+                break;
+            case RADIO_RECEIVE:
+
+        }
+        radio_receive(NULL, 0);
     }
 
     return 0;

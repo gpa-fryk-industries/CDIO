@@ -10,15 +10,10 @@
     /* Enable MCO clock output  */
     enable-mco;
 
+    /* Enable Radio */
+    //enable-radio;
+
     /* Load configuration data into FPGA */
     config-fpga;
-
-    fpga {
-        /*TODO: Add fpga config options?*/
-    };
-
-    radio {
-        /*TODO: Add radio config options?*/
-    };
 
 };
