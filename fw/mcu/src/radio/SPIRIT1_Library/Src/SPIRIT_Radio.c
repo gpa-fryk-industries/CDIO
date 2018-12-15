@@ -193,7 +193,7 @@ uint8_t SpiritRadioInit(SRadioInit* pxSRadioInitStruct)
   uint8_t drM, drE, FdevM, FdevE, bwM, bwE;
     
   /* Workaround for Vtune */
-  uint8_t value = 0xA0; SpiritSpiWriteRegisters(0x9F, 1, &value);
+  //uint8_t value = 0xA0; SpiritSpiWriteRegisters(0x9F, 1, &value);
   
   /* Calculates the offset respect to RF frequency and according to xtal_ppm parameter: (xtal_ppm*FBase)/10^6 */
   FOffsetTmp = (int32_t)(((float)pxSRadioInitStruct->nXtalOffsetPpm*pxSRadioInitStruct->lFrequencyBase)/PPM_FACTOR);
@@ -207,26 +207,26 @@ uint8_t SpiritRadioInit(SRadioInit* pxSRadioInitStruct)
   s_assert_param(IS_F_DEV(pxSRadioInitStruct->lFreqDev,s_lXtalFrequency));
   
   /* Disable the digital, ADC, SMPS reference clock divider if fXO>24MHz or fXO<26MHz */
-  SpiritSpiCommandStrobes(COMMAND_STANDBY);    
+  SpiritSpiCommandStrobes(COMMAND_STANDBY);
   do{
     /* Delay for state transition */
     for(volatile uint8_t i=0; i!=0xFF; i++);
-    
+
     /* Reads the MC_STATUS register */
     SpiritRefreshStatus();
   }while(g_xStatus.MC_STATE!=MC_STATE_STANDBY);
-  
+
   if(s_lXtalFrequency<DOUBLE_XTAL_THR)
   {
     SpiritRadioSetDigDiv(S_DISABLE);
     s_assert_param(IS_CH_BW(pxSRadioInitStruct->lBandwidth,s_lXtalFrequency));
   }
   else
-  {      
+  {
     SpiritRadioSetDigDiv(S_ENABLE);
     s_assert_param(IS_CH_BW(pxSRadioInitStruct->lBandwidth,(s_lXtalFrequency>>1)));
   }
-  
+
   /* Goes in READY state */
   SpiritSpiCommandStrobes(COMMAND_READY);
   do{

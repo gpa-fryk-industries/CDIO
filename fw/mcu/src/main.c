@@ -96,6 +96,8 @@ void init_spi_pins(){
     /* PA_RADIO_SHD pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PA_RADIO_SHD);
     gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, PA_RADIO_SHD);
+    gpio_set(GPIOA, PA_RADIO_SHD); /* Disable radio */
+    _dumb_delay_us(100);
     gpio_clear(GPIOA, PA_RADIO_SHD); /* Enable radio */
 
 
@@ -325,6 +327,14 @@ int main(){
     init_spi();
     spi_set_nss_high(SPI1);
 
+    _dumb_delay_us(100);
+
+    SpiritSpiCommandStrobes(COMMAND_SRES);
+
+    SpiritManagementWaExtraCurrent();
+
+    SpiritRadioSetXtalFrequency(50000000);
+
     /* Init Radio */
     radio_init();
 
@@ -336,14 +346,7 @@ int main(){
 
     /* Loop */
     while(true){
-        switch(radio_current_state()){
-            case RADIO_READY:
-                radio_receive(&rxbuffer, 256);
-                break;
-            case RADIO_RECEIVE:
 
-        }
-        radio_receive(NULL, 0);
     }
 
     return 0;

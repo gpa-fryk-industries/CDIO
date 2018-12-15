@@ -147,7 +147,7 @@ typedef enum
  *        change opportunely the fields order when use a different endianness.
  */
 
-typedef struct
+typedef struct __attribute__((__packed__))
 {
   uint8_t XO_ON:1;		/*!< This one bit field notifies if XO is operating
   	  	  	  	     (XO_ON is 1) or not (XO_On is 0) */

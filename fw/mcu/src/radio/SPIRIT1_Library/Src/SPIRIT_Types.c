@@ -206,8 +206,10 @@ void SpiritRefreshStatus(void)
     /* Reads the MC_STATUS register to update the g_xStatus */
     g_xStatus = SpiritSpiReadRegisters(MC_STATE1_BASE, 2, tempRegValue);
   }
-  while(!((((uint8_t*)&g_xStatus)[0])==tempRegValue[1] && 
-          (((uint8_t*)&g_xStatus)[1]&0x0F)==tempRegValue[0])); 
+  while(!(
+          (((uint8_t*)&g_xStatus)[0])==tempRegValue[1] && //S0 = STATE0
+          (((uint8_t*)&g_xStatus)[1]&0x0F)==tempRegValue[0]//S1&0x0F = STATE1
+          ));
 
 }
 

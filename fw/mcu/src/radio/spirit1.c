@@ -14,6 +14,7 @@
 #include "SPIRIT1_Library/Inc/SPIRIT_Radio.h"
 #include "SPIRIT1_Library/Inc/SPIRIT_Config.h"
 #include "../pins.h"
+#include "../dumb_delay.h"
 #include <libopencm3/stm32/spi.h>
 #include <libopencm3/stm32/gpio.h>
 #include <SPIRIT1_Util.h>
@@ -270,6 +271,8 @@ void radio_interrupt(){
 }
 
 
+#define PACK_STATUS(h, l) (((h) << 8) | (l))
+
 /**
  * Write registers in Radio
  * @param address Address to write to.
@@ -285,13 +288,15 @@ StatusBytes RadioSpiWriteRegisters(uint8_t address, uint8_t n_regs, uint8_t *buf
     /* Set CS LOW */
     gpio_clear(GPIOA, PA_RADIO_CS);
 
+    _dumb_delay_us(10);
+
     /* Send write header and address
      * Meanwhile spirit1 returns its status as two bytes
      */
     uint8_t stath = (uint8_t) spi_xfer(SPI1, WRITE_HEADER);
     uint8_t statl = (uint8_t) spi_xfer(SPI1, address);
 
-    tmpstatus = (uint16_t) (stath | statl);
+    tmpstatus = (uint16_t) PACK_STATUS(stath, statl);
 
     /* Write n bytes */
     for (int i = 0; i < n_regs; i++)
@@ -319,13 +324,15 @@ StatusBytes RadioSpiReadRegisters(uint8_t address, uint8_t n_regs, uint8_t *buff
     /* Set CS LOW */
     gpio_clear(GPIOA, PA_RADIO_CS);
 
+    _dumb_delay_us(10);
+
     /* Send write header and address
      * Meanwhile spirit1 returns its status as two bytes
      */
     uint8_t stath = (uint8_t) spi_xfer(SPI1, READ_HEADER);
     uint8_t statl = (uint8_t) spi_xfer(SPI1, address);
 
-    tmpstatus = (uint16_t) (stath | statl);
+    tmpstatus = (uint16_t) PACK_STATUS(stath, statl);
 
     /* Read n bytes*/
     for (int i = 0; i < n_regs; i++)
@@ -348,17 +355,20 @@ StatusBytes RadioSpiCommandStrobes(uint8_t cmd_code) {
 
     StatusBytes *status = (StatusBytes *) &tmpstatus;
 
-
     /* Set CS LOW */
     gpio_clear(GPIOA, PA_RADIO_CS);
+
+    _dumb_delay_us(10);
 
     /* Send write header and address
      * Meanwhile spirit1 returns its status as two bytes
      */
-    uint8_t stath = (uint8_t) spi_xfer(SPI1, COMMAND_HEADER);
+    uint8_t stath = (uint8_t) spi_xfer(SPI1, READ_HEADER);
     uint8_t statl = (uint8_t) spi_xfer(SPI1, cmd_code);
 
-    tmpstatus = (uint16_t) (stath | statl);
+    tmpstatus = (uint16_t) PACK_STATUS(stath, statl);
+
+    _dumb_delay_us(10);
 
     /* Set CS HIGH */
     gpio_set(GPIOA, PA_RADIO_CS);
