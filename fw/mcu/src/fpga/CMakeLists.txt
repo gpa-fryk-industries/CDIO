@@ -1,5 +1,5 @@
 # FPGA Configuration image
-set(CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/fpga_conf.bin)
+set(CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/top_mic_test_bitmap.bin)
 
 
 # FPGA Support sources
@@ -24,7 +24,7 @@ set(txt ".global FDT_NAME"
 string (REPLACE ";" "\\\\n" txt "${txt}")
 add_custom_command(
         OUTPUT fpga_conf.S
-        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/fpga_conf.bin
+        DEPENDS ${CONFIG_FILE}
         COMMAND echo ${txt} | ${CMAKE_C_COMPILER} -E -o "fpga_conf.S" -DFDT_FILE=\\"${CONFIG_FILE}\\" -DFDT_NAME=fpga_conf -DFDT_NAME_END=fpga_conf_end -
 )
 message(INFO " FPGA CONFIGURATION @ ${CONFIG_FILE}")
