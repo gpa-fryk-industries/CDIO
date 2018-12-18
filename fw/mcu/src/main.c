@@ -1,12 +1,12 @@
 #include <stdio.h>
+#include <libopencm3/cm3/nvic.h>
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/stm32/i2c.h>
 #include <libopencm3/stm32/spi.h>
 #include <libopencm3/stm32/exti.h>
-#include <libopencm3/stm32/l0/nvic.h>
-#include <libopencm3/cm3/nvic.h>
+#include <libopencm3/stm32/l0/timer.h>
 
 
 
@@ -18,6 +18,7 @@
 #include "dumb_delay.h"
 #include "radio/SPIRIT1_Library/Inc/SPIRIT_Config.h"
 #include "radio/spirit1.h"
+#include "fpga/fpga.h"
 
 FDT_FILE(config);
 
@@ -189,6 +190,11 @@ bool init_fpga(bool enable){
     gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PA_FPGA_CRESET);
     gpio_clear(GPIOA, PA_FPGA_CRESET);
 
+    /* PB_FPGA_RST pin */
+    gpio_mode_setup(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, PB_FPGA_RST);
+    gpio_set_output_options(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_LOW, PB_FPGA_RST);
+    gpio_clear(GPIOB, PB_FPGA_RST);
+
     /* PA_FPGA_CDONE pin */
     gpio_mode_setup(GPIOA, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, PA_FPGA_CDONE);
 
@@ -290,7 +296,52 @@ void exti4_15_isr(void)
     }
 }
 
+
+void init_lptim(){
+
+    /* Enable LPTIM1 clock */
+    rcc_periph_clock_enable(RCC_LPTIM1);
+
+    /* Reset LPTIM1 to defaults. */
+    rcc_periph_reset_pulse(RST_LPTIM1);
+
+
+    /* Reset count */
+    timer_set_counter(LPTIM1_BASE, 0);
+
+
+
+
+    /* Clear current count */
+    LPTIM1_CNT = 0;
+
+    /* Prescale with 128 */
+    LPTIM1_CFGR |= LPTIM_CFGR_PRESC_128;
+
+    /* Start timer */
+    LPTIM1_CR |= LPTIM_CR_ENABLE;
+
+    /* Enable LPTIM1 interrupts. */
+    nvic_enable_irq(NVIC_LPTIM1_IRQ);
+    nvic_set_priority(NVIC_LPTIM1_IRQ, 1);
+}
+
+void lptim1_isr(void){
+
+}
+
+#ifdef ENABLE_SEMIHOSTING
+    extern void initialise_monitor_handles(void); /* prototype */
+#   warning "Semihosting is ENABLED! Will not run without debugger!"
+#endif
+
 int main(){
+
+
+#ifdef ENABLE_SEMIHOSTING
+    initialise_monitor_handles();
+#endif
+
 
     init_clocks();
 
@@ -329,23 +380,45 @@ int main(){
 
     _dumb_delay_us(100);
 
-    SpiritSpiCommandStrobes(COMMAND_SRES);
+    //SpiritSpiCommandStrobes(COMMAND_SRES);
 
-    SpiritManagementWaExtraCurrent();
+    //SpiritManagementWaExtraCurrent();
 
-    SpiritRadioSetXtalFrequency(50000000);
+    //SpiritRadioSetXtalFrequency(50000000);
 
     /* Init Radio */
-    radio_init();
+    //radio_init();
 
-    char test[] = "Hello world";
+    char wtest[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    char rtest[12];
 
-    char rxbuffer[256];
+    //radio_send((uint8_t *) test, 12);
+    /* Radio stays in LOCKWON state, try to force it to TX state *
+     * Doesn't work for shit...
+     */
+//    StatusBytes s;
+//    do{
+//        s = RadioSpiCommandStrobes(COMMAND_TX);
+//    }while(s.MC_STATE != MC_STATE_TX);
 
-    radio_send((uint8_t *) test, 12);
+    fpga_reset();
 
     /* Loop */
     while(true){
+
+        for (int i = 0; i < 12; ++i) {
+
+            /*  */
+            fpga_write((uint8_t *) &wtest[i], 2);
+            _dumb_delay_us(10000);
+
+        }
+
+
+
+        /*  */
+        fpga_read((uint8_t *) &rtest, 12);
+
 
     }
 

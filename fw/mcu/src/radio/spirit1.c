@@ -125,8 +125,15 @@ SRadioInit xRadioInit = {
 };
 
 /* Gpio struct for radio IRQ output */
-SGpioInit xGpioIRQ={
+SGpioInit xGpioIRQ0={
         SPIRIT_GPIO_0,
+        SPIRIT_GPIO_MODE_DIGITAL_OUTPUT_LP,
+        SPIRIT_GPIO_DIG_OUT_IRQ
+};
+
+/* Gpio struct for radio IRQ output */
+SGpioInit xGpioIRQ1={
+        SPIRIT_GPIO_1,
         SPIRIT_GPIO_MODE_DIGITAL_OUTPUT_LP,
         SPIRIT_GPIO_DIG_OUT_IRQ
 };
@@ -167,7 +174,8 @@ radio_state radio_current_state() {
  */
 void radio_init(){
     /* Config radio GPIOs */
-    Spirit1GpioIrqInit(&xGpioIRQ);
+    Spirit1GpioIrqInit(&xGpioIRQ0);
+    Spirit1GpioIrqInit(&xGpioIRQ1);
 
     /* Init radio module with settings*/
     Spirit1RadioInit(&xRadioInit);
@@ -302,6 +310,8 @@ StatusBytes RadioSpiWriteRegisters(uint8_t address, uint8_t n_regs, uint8_t *buf
     for (int i = 0; i < n_regs; i++)
         spi_send(SPI1, buffer[i]);
 
+    _dumb_delay_us(10);
+    
     /* Set CS HIGH */
     gpio_set(GPIOA, PA_RADIO_CS);
 
@@ -338,6 +348,8 @@ StatusBytes RadioSpiReadRegisters(uint8_t address, uint8_t n_regs, uint8_t *buff
     for (int i = 0; i < n_regs; i++)
         buffer[i] = (uint8_t) spi_xfer(SPI1, 0x00);
 
+    _dumb_delay_us(10);
+    
     /* Set CS HIGH */
     gpio_set(GPIOA, PA_RADIO_CS);
 
@@ -363,7 +375,7 @@ StatusBytes RadioSpiCommandStrobes(uint8_t cmd_code) {
     /* Send write header and address
      * Meanwhile spirit1 returns its status as two bytes
      */
-    uint8_t stath = (uint8_t) spi_xfer(SPI1, READ_HEADER);
+    uint8_t stath = (uint8_t) spi_xfer(SPI1, COMMAND_HEADER);
     uint8_t statl = (uint8_t) spi_xfer(SPI1, cmd_code);
 
     tmpstatus = (uint16_t) PACK_STATUS(stath, statl);

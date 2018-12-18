@@ -209,8 +209,10 @@ uint8_t SpiritRadioInit(SRadioInit* pxSRadioInitStruct)
   /* Disable the digital, ADC, SMPS reference clock divider if fXO>24MHz or fXO<26MHz */
   SpiritSpiCommandStrobes(COMMAND_STANDBY);
   do{
+
+    SpiritSpiCommandStrobes(COMMAND_STANDBY);
     /* Delay for state transition */
-    for(volatile uint8_t i=0; i!=0xFF; i++);
+    for(volatile uint16_t i=0; i!=0xFFF; i++);
 
     /* Reads the MC_STATUS register */
     SpiritRefreshStatus();
@@ -230,6 +232,7 @@ uint8_t SpiritRadioInit(SRadioInit* pxSRadioInitStruct)
   /* Goes in READY state */
   SpiritSpiCommandStrobes(COMMAND_READY);
   do{
+    SpiritSpiCommandStrobes(COMMAND_READY);
     /* Delay for state transition */
     for(volatile uint8_t i=0; i!=0xFF; i++);
     

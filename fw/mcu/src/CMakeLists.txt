@@ -5,7 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 #Parameters
 set(OPT -Os)
-SET(ASM_OPTIONS "-x assembler-with-cpp")
+set(ASM_OPTIONS "-x assembler-with-cpp")
+set(ENABLE_SEMIHOSTING OFF)
 
 ### Compiler ###
 set(CMAKE_C_COMPILER "arm-none-eabi-gcc")
@@ -25,7 +26,15 @@ SET(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} ${ASM_OPTIONS}" )
 
 #linker
 set(LIBS "-lc -lm -lnosys")
-set(LDFLAGS "${OCM3_DEFS} -specs=nano.specs -specs=nosys.specs  -nostartfiles -T ${CMAKE_BINARY_DIR}/generated.ld -L ${LIBS} -Wl,-Map=symbols.map,--cref -Wl,--gc-sections -Wl,--print-memory-usage")
+
+if (ENABLE_SEMIHOSTING)
+    message(WARNING " Semihosting is ENABLED! Will not run without debugger!")
+    set(LDFLAGS "${OCM3_DEFS} -specs=nano.specs -specs=rdimon.specs  -nostartfiles -T ${CMAKE_BINARY_DIR}/generated.ld -L ${LIBS} -Wl,-Map=symbols.map,--cref -Wl,--gc-sections -Wl,--print-memory-usage")
+    add_definitions(-DENABLE_SEMIHOSTING)
+else()
+    set(LDFLAGS "${OCM3_DEFS} -specs=nano.specs -specs=nosys.specs  -nostartfiles -T ${CMAKE_BINARY_DIR}/generated.ld -L ${LIBS} -Wl,-Map=symbols.map,--cref -Wl,--gc-sections -Wl,--print-memory-usage")
+endif ()
+
 
 #add linker flags
 set( CMAKE_CXX_FLAGS  "${LDFLAGS}" )
