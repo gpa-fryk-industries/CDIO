@@ -15,7 +15,7 @@ entity send_to_master is
 	
 		clock : in std_logic;
 		reset : in std_logic;
-		data_in  : in signed(L-1 downto 0);
+		data_in  : in unsigned(L-1 downto 0);
 		--data_in  : in signed(13 downto 0);
 		data_out : out std_logic
    
@@ -25,11 +25,11 @@ end send_to_master;
 architecture arch_send_to_master of send_to_master is
 
 	signal count : integer := 0;
-	signal data_internal  : signed(15 downto 0);
+	signal data_internal  : unsigned(15 downto 0);
 		
 begin
 
-	data_internal <= to_signed( to_integer(data_in), 16);
+	data_internal <= data_in;
 --
 	process(clock, reset)
 	begin
